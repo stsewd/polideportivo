@@ -13,9 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    espacio.cpp \
+    espaciodeportivo.cpp \
+    espaciocoimplementario.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    espacio.h \
+    espaciodeportivo.h \
+    espaciocoimplementario.h
 
 FORMS    += mainwindow.ui
 
