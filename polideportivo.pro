@@ -14,14 +14,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    espacio.cpp \
-    espaciodeportivo.cpp \
-    espaciocoimplementario.cpp
+    srv/administrador.cpp \
+    srv/cliente.cpp \
+    srv/espacio.cpp \
+    srv/espaciocomplementario.cpp \
+    srv/espaciodeportivo.cpp \
+    srv/persona.cpp \
+    srv/reserva.cpp \
+    srv/socio.cpp
 
 HEADERS  += mainwindow.h \
-    espacio.h \
-    espaciodeportivo.h \
-    espaciocoimplementario.h
+    srv/administrador.h \
+    srv/cliente.h \
+    srv/espacio.h \
+    srv/espaciocomplementario.h \
+    srv/espaciodeportivo.h \
+    srv/persona.h \
+    srv/reserva.h \
+    srv/socio.h
 
 FORMS    += mainwindow.ui
 

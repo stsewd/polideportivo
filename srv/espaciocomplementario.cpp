@@ -1,4 +1,4 @@
-#include "espaciocoimplementario.h"
+#include "espaciocomplementario.h"
 
 EspacioCoimplementario::EspacioCoimplementario()
 {

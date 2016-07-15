@@ -1,6 +1,7 @@
 #ifndef ESPACIODEPORTIVO_H
 #define ESPACIODEPORTIVO_H
 
+#include "espacio.h"
 
 class TipoEspacioDeportivo {
     std::string nombre;
