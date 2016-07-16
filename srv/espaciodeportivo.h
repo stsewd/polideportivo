@@ -6,14 +6,19 @@
 #include "espacio.h"
 
 class TipoEspacioDeportivo {
+public:
     std::string nombre;
+    TipoEspacioDeportivo();
+    TipoEspacioDeportivo(std::string nombre) {
+        this->nombre = nombre;
+    }
 };
 
 class EspacioDeportivo : public Espacio {
-    TipoEspacioDeportivo tipo;
 public:
+    TipoEspacioDeportivo tipo;
     EspacioDeportivo();
-    EspacioDeportivo(int id, std::string nombre, std::string descripcion, double precioPorhora, int capacidad,Estado estado, Horario horario, TipoEspacioDeportivo TipoEspacio);
+    EspacioDeportivo(std::string nombre, std::string descripcion, double precioPorhora, int capacidad,Estado estado, Horario horario, TipoEspacioDeportivo TipoEspacio);
     ~EspacioDeportivo();
 };
 

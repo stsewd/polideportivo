@@ -6,14 +6,22 @@
 #include "espacio.h"
 
 class TipoEspacioComplementario {
+public:
     std::string nombre;
+    TipoEspacioComplementario(){}
+    TipoEspacioComplementario(std::string nombre){
+        this->nombre = nombre;
+    }
 };
 
 class EspacioComplementario : public Espacio {
-    TipoEspacioComplementario tipo;
 public:
+    TipoEspacioComplementario tipo;
     EspacioComplementario();
-    EspacioComplementario(int id, std::string nombre, std::string descripcion, double precioPorhora, int capacidad, Estado estado, Horario horario, TipoEspacioComplementario TipoEspacio);
+    EspacioComplementario(std::string nombre, std::string descripcion, double precioPorhora,
+                          int capacidad, Estado estado, Horario horario, TipoEspacioComplementario TipoEspacio
+    );
+
     ~EspacioComplementario();
 };
 

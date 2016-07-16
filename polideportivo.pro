@@ -29,7 +29,9 @@ SOURCES += main.cpp\
     srv/empleado.cpp \
     dao/empleadodao.cpp \
     adminmainwindow.cpp \
-    srv/espaciosrv.cpp
+    srv/espaciosrv.cpp \
+    srv/espaciodeportivosrv.cpp \
+    srv/espaciocomplementariosrv.cpp
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -47,7 +49,9 @@ HEADERS  += mainwindow.h \
     srv/empleado.h \
     dao/empleadodao.h \
     adminmainwindow.h \
-    srv/espaciosrv.h
+    srv/espaciosrv.h \
+    srv/espaciodeportivosrv.h \
+    srv/espaciocomplementariosrv.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
