@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     dao/sociodao.cpp \
     loginwindow.cpp \
     srv/empleado.cpp \
-    dao/empleadodao.cpp
+    dao/empleadodao.cpp \
+    adminmainwindow.cpp
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -43,9 +44,11 @@ HEADERS  += mainwindow.h \
     dao/sociodao.h \
     loginwindow.h \
     srv/empleado.h \
-    dao/empleadodao.h
+    dao/empleadodao.h \
+    adminmainwindow.h
 
 FORMS    += mainwindow.ui \
-    loginwindow.ui
+    loginwindow.ui \
+    adminmainwindow.ui
 
 LIBS += -lmysqlcppconn
