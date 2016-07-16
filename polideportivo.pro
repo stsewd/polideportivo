@@ -31,6 +31,8 @@ SOURCES += main.cpp\
     adminmainwindow.cpp \
     srv/espaciosrv.cpp \
     dao/conexiondb.cpp
+    srv/espaciodeportivosrv.cpp \
+    srv/espaciocomplementariosrv.cpp
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -50,6 +52,8 @@ HEADERS  += mainwindow.h \
     adminmainwindow.h \
     srv/espaciosrv.h \
     dao/conexiondb.h
+    srv/espaciodeportivosrv.h \
+    srv/espaciocomplementariosrv.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
