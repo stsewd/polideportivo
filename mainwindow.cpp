@@ -12,3 +12,14 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_salirAction_triggered()
+{
+    this->close();
+}
+
+void MainWindow::on_cerrarSesionAction_triggered()
+{
+    loginWindow->show();
+    this->close();
+}

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>623</width>
-    <height>300</height>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,14 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="cerrarSesionAction"/>
+    <addaction name="salirAction"/>
+   </widget>
+   <addaction name="menuArchivo"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -33,6 +41,16 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="cerrarSesionAction">
+   <property name="text">
+    <string>Cerrar sesión</string>
+   </property>
+  </action>
+  <action name="salirAction">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

@@ -1,11 +1,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "loginwindow.h"
+
 #include <QMainWindow>
 
 namespace Ui {
 class MainWindow;
 }
+
+class LoginWindow;
 
 class MainWindow : public QMainWindow
 {
@@ -15,8 +19,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_salirAction_triggered();
+
+    void on_cerrarSesionAction_triggered();
+
 private:
     Ui::MainWindow *ui;
+public:
+    LoginWindow* loginWindow;
 };
 
 #endif // MAINWINDOW_H
