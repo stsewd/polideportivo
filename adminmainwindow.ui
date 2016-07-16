@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -28,7 +28,7 @@
         <item row="0" column="0">
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="espaciosComboBox">
             <item>
              <property name="text">
               <string>Espacios deportivos</string>
@@ -55,26 +55,26 @@
            </spacer>
           </item>
           <item row="1" column="0" colspan="3">
-           <widget class="QTableView" name="tableView"/>
+           <widget class="QTableView" name="espaciosTable"/>
           </item>
           <item row="2" column="0" colspan="2">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="agregarEspacioBtn">
               <property name="text">
                <string>Agregar</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="editarEspacioBtn">
               <property name="text">
                <string>Editar</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="eliminarEspacioBtn">
               <property name="text">
                <string>Eliminar</string>
               </property>
@@ -105,26 +105,26 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableView" name="tableView_2"/>
+         <widget class="QTableView" name="clientesTable"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="agregarClienteBtn">
             <property name="text">
              <string>Agregar</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_5">
+           <widget class="QPushButton" name="editarClienteBtn">
             <property name="text">
              <string>Editar</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_6">
+           <widget class="QPushButton" name="eliminarClienteBtn">
             <property name="text">
              <string>Eliminar</string>
             </property>
