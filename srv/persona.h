@@ -4,12 +4,13 @@
 #include <string>
 
 class Persona {
+public:
     std::string nombre;
     std::string apellido;
     std::string cedula;
     std::string direccion;
     std::string telefono;
-public:
+
     Persona();
     Persona(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono);
     ~Persona();

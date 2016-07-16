@@ -3,13 +3,14 @@
 
 #include <string>
 #include <vector>
-
+#include "conexiondb.h"
 #include "../srv/cliente.h"
 
 class clienteDAO
 {
 public:
     clienteDAO();
+    ConexionDB* dataBase;
 
     Cliente add(Cliente& espacio);
     Cliente mod(Cliente& espacio);
