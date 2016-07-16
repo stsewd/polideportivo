@@ -29,7 +29,6 @@ SOURCES += main.cpp\
     srv/empleado.cpp \
     dao/empleadodao.cpp \
     adminmainwindow.cpp \
-    srv/espaciosrv.cpp \
     dao/conexiondb.cpp
     srv/espaciodeportivosrv.cpp \
     srv/espaciocomplementariosrv.cpp
@@ -50,7 +49,6 @@ HEADERS  += mainwindow.h \
     srv/empleado.h \
     dao/empleadodao.h \
     adminmainwindow.h \
-    srv/espaciosrv.h \
     dao/conexiondb.h
     srv/espaciodeportivosrv.h \
     srv/espaciocomplementariosrv.h
