@@ -1,9 +1,0 @@
-#include "espacio.h"
-
-Espacio::Espacio()
-{
-}
-
-Espacio::Espacio(int id, string nombre, string descripcion, double precioPorhora, int capacidad,Estado estado, Horario horario){
-    
-}

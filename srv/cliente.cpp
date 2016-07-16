@@ -11,3 +11,8 @@ Cliente::Cliente (
 {
 
 }
+
+Cliente::~Cliente()
+{
+
+}

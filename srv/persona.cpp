@@ -8,3 +8,8 @@ Persona::Persona(std::string cedula, std::string nombre, std::string apellido, s
 {
     
 }
+
+Persona::~Persona()
+{
+
+}
