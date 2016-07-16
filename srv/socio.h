@@ -10,6 +10,8 @@ class Socio : public Cliente {
     bool estaActivo;
 public:
     Socio();
+    Socio(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono, time_t fechaIngreso, bool estaActivo);
+    ~Socio();
 };
 
 #endif // SOCIO_H

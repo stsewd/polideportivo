@@ -13,6 +13,9 @@ class Reserva {
     time_t fechaReserva;
 public:
     Reserva();
+    Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReservacion, time_t fechaReserva);
+    ~Reserva();
+        
 };
 
 #endif // RESERVA_H

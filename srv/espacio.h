@@ -30,6 +30,8 @@ class Espacio {
     Horario horario;
 public:
     Espacio();
+    Espacio(int id, std::string nombre, std::string descripcion, double precioPorhora, int capacidad, Estado estado, Horario horario);
+    ~Espacio();
 };
 
 #endif // ESPACIO_H
