@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     dao/espaciocomplementariodao.cpp \
     dao/clientedao.cpp \
     dao/sociodao.cpp \
-    dao/administradordao.cpp
+    dao/administradordao.cpp \
+    loginwindow.cpp
 
 HEADERS  += mainwindow.h \
     srv/administrador.h \
@@ -41,8 +42,10 @@ HEADERS  += mainwindow.h \
     dao/espaciocomplementariodao.h \
     dao/clientedao.h \
     dao/sociodao.h \
-    dao/administradordao.h
+    dao/administradordao.h \
+    loginwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    loginwindow.ui
 
 LIBS += -lmysqlcppconn
