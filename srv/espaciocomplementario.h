@@ -7,10 +7,10 @@ class TipoEspacioComplementario {
     std::string nombre;
 };
 
-class EspacioCoimplementario : public Espacio {
+class EspacioComplementario : public Espacio {
     TipoEspacioComplementario tipo;
 public:
-    EspacioCoimplementario();
+    EspacioComplementario();
 };
 
 #endif // ESPACIOCOIMPLEMENTARIO_H

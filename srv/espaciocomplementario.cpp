@@ -1,6 +1,6 @@
 #include "espaciocomplementario.h"
 
-EspacioCoimplementario::EspacioCoimplementario()
+EspacioComplementario::EspacioComplementario()
 {
 
 }
