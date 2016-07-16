@@ -1,0 +1,12 @@
+#include "cliente.h"
+
+Cliente::Cliente()
+{
+
+}
+Cliente::Cliente(
+        string cedula, string nombre, string apellido, string direccion,string telefono):
+    Persona(cedula, nombre, apellido, direccion,telefono)
+{
+    
+}
