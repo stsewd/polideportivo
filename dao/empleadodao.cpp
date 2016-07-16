@@ -1,6 +1,6 @@
-#include "administradordao.h"
+#include "empleadodao.h"
 
-administradorDAO::administradorDAO()
+EmpleadoDAO::EmpleadoDAO()
 {
 
 }

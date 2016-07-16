@@ -4,19 +4,19 @@
 #include <string>
 #include <vector>
 
-#include "../srv/administrador.h"
+#include "../srv/empleado.h"
 
-class administradorDAO
+class EmpleadoDAO
 {
 public:
-    administradorDAO();
+    EmpleadoDAO();
 
 
-    Administrador add(Administrador& espacio);
-    Administrador mod(Administrador& espacio);
+    Empleado add(Empleado& espacio);
+    Empleado mod(Empleado& espacio);
     void del(std::string cedula);
-    Administrador get(std::string cedula);
-    std::vector<Administrador> get();
+    Empleado get(std::string cedula);
+    std::vector<Empleado> get();
 };
 
 #endif // ADMINISTRADORDAO_H

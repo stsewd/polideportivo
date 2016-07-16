@@ -31,7 +31,7 @@
      <x>50</x>
      <y>100</y>
      <width>160</width>
-     <height>127</height>
+     <height>144</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -59,6 +59,20 @@
       <property name="placeholderText">
        <string>Contraseña</string>
       </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>Empleado</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Administrador</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item>

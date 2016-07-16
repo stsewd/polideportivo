@@ -14,7 +14,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    srv/administrador.cpp \
     srv/cliente.cpp \
     srv/espacio.cpp \
     srv/espaciocomplementario.cpp \
@@ -26,11 +25,11 @@ SOURCES += main.cpp\
     dao/espaciocomplementariodao.cpp \
     dao/clientedao.cpp \
     dao/sociodao.cpp \
-    dao/administradordao.cpp \
-    loginwindow.cpp
+    loginwindow.cpp \
+    srv/empleado.cpp \
+    dao/empleadodao.cpp
 
 HEADERS  += mainwindow.h \
-    srv/administrador.h \
     srv/cliente.h \
     srv/espacio.h \
     srv/espaciocomplementario.h \
@@ -42,8 +41,9 @@ HEADERS  += mainwindow.h \
     dao/espaciocomplementariodao.h \
     dao/clientedao.h \
     dao/sociodao.h \
-    dao/administradordao.h \
-    loginwindow.h
+    loginwindow.h \
+    srv/empleado.h \
+    dao/empleadodao.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui
