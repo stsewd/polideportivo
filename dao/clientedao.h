@@ -6,14 +6,14 @@
 #include "conexiondb.h"
 #include "../srv/cliente.h"
 
-class clienteDAO
+class ClienteDAO
 {
 public:
-    clienteDAO();
+    ClienteDAO();
     ConexionDB* dataBase;
 
-    Cliente add(Cliente& espacio);
-    Cliente mod(Cliente& espacio);
+    Cliente add(Cliente& cliente);
+    Cliente mod(Cliente& cliente);
     void del(std::string cedula);
     Cliente get(std::string cedula);
     std::vector<Cliente> get();
