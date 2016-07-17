@@ -9,9 +9,9 @@ ClienteSrv::ClienteSrv()
 Cliente ClienteSrv::add(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono)
 {
     validarCedula(cedula);
-    validarVacio(nombre);
-    validarVacio(apellido);
-    validarVacio(direccion);
+    validarString(nombre);
+    validarString(apellido);
+    validarString(direccion);
     validarTelefono(telefono);
 
     Cliente cliente(cedula, nombre, apellido, direccion, telefono);
@@ -24,9 +24,9 @@ Cliente ClienteSrv::mod(std::string cedula, std::string nombre, std::string apel
 {
     Cliente cliente = get(cedula);
 
-    validarVacio(nombre);
-    validarVacio(apellido);
-    validarVacio(direccion);
+    validarString(nombre);
+    validarString(apellido);
+    validarString(direccion);
     validarTelefono(telefono);
 
     cliente.nombre = nombre;

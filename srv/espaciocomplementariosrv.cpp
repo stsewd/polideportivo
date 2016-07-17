@@ -11,8 +11,8 @@ EspacioComplementario EspacioComplementarioSrv::add(std::string nombre, std::str
                                                     Horario horario, std::string tipoEspacio
                                                 )
 {
-    validarVacio(nombre);
-    validarVacio(descripcion);
+    validarString(nombre);
+    validarString(descripcion);
     validarNumero(precioPorHora);
     validarNumero(capacidad);
 
@@ -30,8 +30,8 @@ EspacioComplementario EspacioComplementarioSrv::mod(std::string nombre, std::str
                                                     double precioPorHora, int capacidad, std::string estadoEspacio,
                                                     Horario horario, std::string tipoEspacio)
 {
-    validarVacio(nombre);
-    validarVacio(descripcion);
+    validarString(nombre);
+    validarString(descripcion);
     validarNumero(precioPorHora);
     validarNumero(capacidad);
 
