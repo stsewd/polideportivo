@@ -5,7 +5,7 @@
 
 void validarCedula(std::string cedula);
 void validarTelefono(std::string telefono);
-void validarVacio(std::string str);
+void validarString(std::string str);
 void validarNumero(double num);
 
 
