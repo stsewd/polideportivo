@@ -1,4 +1,5 @@
 #include "espaciocomplementariosrv.h"
+#include "tools.h"
 
 EspacioComplementarioSrv::EspacioComplementarioSrv()
 {
@@ -10,6 +11,11 @@ EspacioComplementario EspacioComplementarioSrv::add(std::string nombre, std::str
                                                     Horario horario, std::string tipoEspacio
                                                 )
 {
+    validarVacio(nombre);
+    validarVacio(descripcion);
+    validarNumero(precioPorHora);
+    validarNumero(capacidad);
+
     TipoEspacioComplementario tipo = getTipo(tipoEspacio);
     Estado estado = getEstado(estadoEspacio);
 
@@ -18,13 +24,17 @@ EspacioComplementario EspacioComplementarioSrv::add(std::string nombre, std::str
     dataBase.add(espacio);
 
     return espacio;
-
 }
 
 EspacioComplementario EspacioComplementarioSrv::mod(std::string nombre, std::string descripcion,
                                                     double precioPorHora, int capacidad, std::string estadoEspacio,
                                                     Horario horario, std::string tipoEspacio)
 {
+    validarVacio(nombre);
+    validarVacio(descripcion);
+    validarNumero(precioPorHora);
+    validarNumero(capacidad);
+
     EspacioComplementario espacio = get(nombre);
 
     auto tipo = getTipo(tipoEspacio);
