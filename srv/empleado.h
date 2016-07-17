@@ -6,9 +6,10 @@
 #include "persona.h"
 
 class Empleado : public Persona {
+public:
     std::string clave;
     bool esAdministrador;
-public:
+
     Empleado();
     Empleado(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono, std::string clave, bool esAdministrador);
     ~Empleado();
