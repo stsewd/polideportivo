@@ -13,7 +13,10 @@ Empleado EmpleadoDAO::add(Empleado &empleado)
         if(dataBase->resultset->getRow() == 0){
             dataBase->statement->execute("INSERT INTO Persona values('"+empleado.cedula+"','"+empleado.nombre+"','"+empleado.apellido+"','"+empleado.direccion+"','"+empleado.telefono+"')");
         }
-        dataBase->statement->execute("INSERT INTO Empleado values('"+empleado.cedula+"','"+empleado.clave+"','"+empleado.esAdministrador+"')");
+
+        int esAdministrador = empleado.esAdministrador ? 1 : 0;
+
+        dataBase->statement->execute("INSERT INTO Empleado values('" + empleado.cedula + "','" + empleado.clave + "','" + esAdministrador + "')");
 
     }catch(...){
         throw "No se puedo ingresar el empleado";
