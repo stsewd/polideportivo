@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <ctime>
 
 #include "../srv/socio.h"
 #include "conexiondb.h"
@@ -11,7 +12,7 @@ class socioDAO
 {
 public:
     socioDAO();
-    ConexionDB dataBase;
+    ConexionDB* dataBase;
     Socio add(Socio& socio);
     Socio mod(Socio& socio);
     void del(std::string cedula);

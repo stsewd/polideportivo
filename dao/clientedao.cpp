@@ -9,7 +9,7 @@ Cliente ClienteDAO::add(Cliente &cliente)
 {
     try{
         dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where cedula = '"+cliente.cedula+"'");
-        if(dataBase->resultset->getRow() == 0){
+        if(dataBase->resultset->rowsCount() == 0){
             dataBase->statement->execute("INSERT INTO Persona values('"+cliente.cedula+"','"+cliente.nombre+"','"+cliente.apellido+"','"+cliente.direccion+"','"+cliente.telefono+"')");
         }
         dataBase->statement->execute("INSERT INTO Cliente values('"+cliente.cedula+"')");

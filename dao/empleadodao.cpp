@@ -10,7 +10,7 @@ Empleado EmpleadoDAO::add(Empleado &empleado)
 {
     try{
         dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where cedula = '"+empleado.cedula+"'");
-        if(dataBase->resultset->getRow() == 0){
+        if(dataBase->resultset->rowsCount() == 0){
             dataBase->statement->execute("INSERT INTO Persona values('"+empleado.cedula+"','"+empleado.nombre+"','"+empleado.apellido+"','"+empleado.direccion+"','"+empleado.telefono+"')");
         }
 
