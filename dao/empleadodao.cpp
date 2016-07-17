@@ -58,8 +58,8 @@ Empleado EmpleadoDAO::get(std::string cedula)
             empleado.apellido= dataBase->resultset->getString(2);
             empleado.direccion= dataBase->resultset->getString(3);
             empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = database.resultset->getString(5);
-            empleado.esAdministrador = database.resultset->getString(6);
+            empleado.clave = dataBase->resultset->getString(5);
+            empleado.esAdministrador = dataBase->resultset->getString(6) == "1";
         }
     }catch(...){
         throw "No se puede extraer el empleado";
