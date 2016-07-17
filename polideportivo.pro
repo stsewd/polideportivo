@@ -29,9 +29,11 @@ SOURCES += main.cpp\
     srv/empleado.cpp \
     dao/empleadodao.cpp \
     adminmainwindow.cpp \
-    dao/conexiondb.cpp
+    dao/conexiondb.cpp \
     srv/espaciodeportivosrv.cpp \
-    srv/espaciocomplementariosrv.cpp
+    srv/espaciocomplementariosrv.cpp \
+    srv/clientesrv.cpp \
+    srv/tools.cpp
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -49,9 +51,11 @@ HEADERS  += mainwindow.h \
     srv/empleado.h \
     dao/empleadodao.h \
     adminmainwindow.h \
-    dao/conexiondb.h
+    dao/conexiondb.h \
     srv/espaciodeportivosrv.h \
-    srv/espaciocomplementariosrv.h
+    srv/espaciocomplementariosrv.h \
+    srv/clientesrv.h \
+    srv/tools.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
