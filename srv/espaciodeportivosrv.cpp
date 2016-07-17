@@ -1,5 +1,6 @@
 #include "espaciodeportivosrv.h"
 #include "espaciodeportivo.h"
+#include "tools.h"
 
 EspacioDeportivoSrv::EspacioDeportivoSrv()
 {
@@ -11,8 +12,8 @@ EspacioDeportivo EspacioDeportivoSrv::add(std::string nombre, std::string descri
                                           Horario horario, std::string tipoEspacio
                                         )
 {
-    validarVacio(nombre);
-    validarVacio(descripcion);
+    validarString(nombre);
+    validarString(descripcion);
     validarNumero(precioPorHora);
     validarNumero(capacidad);
 
@@ -31,8 +32,8 @@ EspacioDeportivo EspacioDeportivoSrv::mod(std::string nombre, std::string descri
                                           Horario horario, std::string tipoEspacio
                                         )
 {
-    validarVacio(nombre);
-    validarVacio(descripcion);
+    validarString(nombre);
+    validarString(descripcion);
     validarNumero(precioPorHora);
     validarNumero(capacidad);
 

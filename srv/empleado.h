@@ -11,7 +11,8 @@ public:
     bool esAdministrador;
 
     Empleado();
-    Empleado(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono, std::string clave, bool esAdministrador);
+    Empleado(std::string cedula, std::string nombre, std::string apellido, std::string direccion, std::string telefono,
+             std::string clave, bool esAdministrador);
     ~Empleado();
 };
 

@@ -14,7 +14,7 @@ void validarCedula(std::string cedula)
 void validarTelefono(std::string telefono)
 {
     std::regex telefonoRegex("\\d{10}");
-    if (!std::regex_match(cedula, telefonoRegex))
+    if (!std::regex_match(telefono, telefonoRegex))
         throw "Teléfono no válido";
 }
 
@@ -27,5 +27,5 @@ void validarString(std::string str)
 void validarNumero(double num)
 {
     if (num < 0)
-        throw "Número negativo."
+        throw "Número negativo.";
 }

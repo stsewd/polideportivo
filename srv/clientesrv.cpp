@@ -38,3 +38,18 @@ Cliente ClienteSrv::mod(std::string cedula, std::string nombre, std::string apel
 
     return cliente;
 }
+
+void ClienteSrv::del(std::string cedula)
+{
+    dataBase.del(cedula);
+}
+
+Cliente ClienteSrv::get(std::__cxx11::string cedula)
+{
+    return dataBase.get(cedula);
+}
+
+std::vector<Cliente> ClienteSrv::get()
+{
+    return dataBase.get();
+}
