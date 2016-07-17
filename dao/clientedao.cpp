@@ -8,8 +8,11 @@ ClienteDAO::ClienteDAO()
 Cliente ClienteDAO::add(Cliente &cliente)
 {
     try{
-    dataBase->statement->execute("INSERT INTO Persona values('"+cliente.cedula+"','"+cliente.nombre+"','"+cliente.apellido+"','"+cliente.direccion+"','"+cliente.telefono+"')");
-    dataBase->statement->execute("INSERT INTO Cliente values('"+cliente.cedula+"'");
+        dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where cedula = '"+cliente.cedula+"'");
+        if(dataBase->resultset->getRow() == 0){
+            dataBase->statement->execute("INSERT INTO Persona values('"+cliente.cedula+"','"+cliente.nombre+"','"+cliente.apellido+"','"+cliente.direccion+"','"+cliente.telefono+"')");
+        }
+        dataBase->statement->execute("INSERT INTO Cliente values('"+cliente.cedula+"')");
     }catch(...){
         throw "No se puedo ingresar el cliente";
     }
@@ -32,7 +35,7 @@ Cliente ClienteDAO::mod(Cliente &cliente)
 void ClienteDAO::del(std::string cedula)
 {
     try{
-        dataBase->statement->execute("DELETE FROM Cliente where ci='"+cedula+"'");
+        dataBase->statement->execute("DELETE FROM Cliente where idCliente='"+cedula+"'");
     }catch(...){
         throw "No se puede eliminar";
     }
@@ -43,8 +46,9 @@ Cliente ClienteDAO::get(std::string cedula)
 {
     Cliente cliente;
     try{
-        dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Cliente where idCliente='"+cedula+"'");
-        dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idCliente='"+cedula+"'");
+        dataBase->resultset = dataBase->statement->executeQuery("select * from Polideportivo.Persona P, Polideportivo.Cliente C where P.cedula = C.idCliente");
+        //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Cliente where idCliente='"+cedula+"'");
+        //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idCliente='"+cedula+"'");
         while(dataBase->resultset->next()){
             cliente.cedula = dataBase->resultset->getString(0);
             cliente.nombre = dataBase->resultset->getString(1);
