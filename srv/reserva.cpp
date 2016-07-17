@@ -5,7 +5,7 @@ Reserva::Reserva()
 
 }
 
-Reserva::Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReserva)
+Reserva::Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReservacion)
 {
 
 }

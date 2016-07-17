@@ -14,7 +14,7 @@ public:
     time_t fechaReserva;
 public:
     Reserva();
-    Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReserva);
+    Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReservacion);
     ~Reserva();
 };
 
