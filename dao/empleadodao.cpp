@@ -14,7 +14,7 @@ Empleado EmpleadoDAO::add(Empleado &empleado)
             dataBase->statement->execute("INSERT INTO Persona values('"+empleado.cedula+"','"+empleado.nombre+"','"+empleado.apellido+"','"+empleado.direccion+"','"+empleado.telefono+"')");
         }
 
-        int esAdministrador = empleado.esAdministrador ? 1 : 0;
+        std::string esAdministrador = empleado.esAdministrador ? "1" : "0";
 
         dataBase->statement->execute("INSERT INTO Empleado values('" + empleado.cedula + "','" + empleado.clave + "','" + esAdministrador + "')");
 
