@@ -1,11 +1,11 @@
 #include "clientedao.h"
 
-clienteDAO::clienteDAO()
+ClienteDAO::ClienteDAO()
 {
     dataBase = new ConexionDB("localhost:3306","root","1234","Polideportivo");
 }
 
-Cliente clienteDAO::add(Cliente &cliente)
+Cliente ClienteDAO::add(Cliente &cliente)
 {
     try{
     dataBase->statement->execute("INSERT INTO Persona values('"+cliente.cedula+"','"+cliente.nombre+"','"+cliente.apellido+"','"+cliente.direccion+"','"+cliente.telefono+"')");
@@ -16,7 +16,7 @@ Cliente clienteDAO::add(Cliente &cliente)
     return cliente;
 }
 
-Cliente clienteDAO::mod(Cliente &cliente)
+Cliente ClienteDAO::mod(Cliente &cliente)
 {
     try{
         std::string consul= "UPDATE Persona SET nombre='"+cliente.nombre+"',apellido = '"+cliente.apellido+"', direccion = '"+
@@ -29,7 +29,7 @@ Cliente clienteDAO::mod(Cliente &cliente)
     return cliente;
 }
 
-void clienteDAO::del(std::string cedula)
+void ClienteDAO::del(std::string cedula)
 {
     try{
         dataBase->statement->execute("DELETE FROM Cliente where ci='"+cedula+"'");
@@ -39,7 +39,7 @@ void clienteDAO::del(std::string cedula)
 }
 
 
-Cliente clienteDAO::get(std::string cedula)
+Cliente ClienteDAO::get(std::string cedula)
 {
     Cliente cliente;
     try{
@@ -59,7 +59,7 @@ Cliente clienteDAO::get(std::string cedula)
     return cliente;
 }
 
-std::vector<Cliente> clienteDAO::get()
+std::vector<Cliente> ClienteDAO::get()
 {
     std::vector<Cliente> clientes;
     Cliente cliente;
