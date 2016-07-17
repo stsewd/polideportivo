@@ -50,6 +50,7 @@ void EmpleadoDAO::del(std::string cedula)
 Empleado EmpleadoDAO::get(std::string cedula)
 {
     Empleado empleado;
+    bool esAdministrador = false;
     try{
         dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Empleado C where P.cedula = C.idEmpleado");
         while(dataBase->resultset->next()){
@@ -58,8 +59,13 @@ Empleado EmpleadoDAO::get(std::string cedula)
             empleado.apellido= dataBase->resultset->getString(2);
             empleado.direccion= dataBase->resultset->getString(3);
             empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = database.resultset->getString(5);
-            empleado.esAdministrador = database.resultset->getString(6);
+            empleado.clave = dataBase->resultset->getString(5);
+            if(dataBase->resultset->getString(6)=="0"){
+                esAdministrador=false;
+            }else{
+                esAdministrador=true;
+            }
+            empleado.esAdministrador = esAdministrador;
         }
     }catch(...){
         throw "No se puede extraer el empleado";
