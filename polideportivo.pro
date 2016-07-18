@@ -34,7 +34,12 @@ SOURCES += main.cpp\
     srv/espaciocomplementariosrv.cpp \
     srv/clientesrv.cpp \
     srv/tools.cpp \
+<<<<<<< HEAD
     dao/herramientas.cpp
+=======
+    srv/empleadosrv.cpp \
+    srv/sociosrv.cpp
+>>>>>>> aed7e8a076ad11e1469f93c5574ca3d653f644e6
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -57,7 +62,12 @@ HEADERS  += mainwindow.h \
     srv/espaciocomplementariosrv.h \
     srv/clientesrv.h \
     srv/tools.h \
+<<<<<<< HEAD
     dao/herramientas.h
+=======
+    srv/empleadosrv.h \
+    srv/sociosrv.h
+>>>>>>> aed7e8a076ad11e1469f93c5574ca3d653f644e6
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \

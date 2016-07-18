@@ -6,11 +6,16 @@ EspacioDeportivoSrv::EspacioDeportivoSrv()
 
 }
 
-EspacioDeportivo EspacioDeportivoSrv::add(std::__cxx11::string nombre, std::__cxx11::string descripcion,
+EspacioDeportivo EspacioDeportivoSrv::add(std::string nombre, std::string descripcion,
                                           double precioPorHora, int capacidad, std::string estadoEspacio,
-                                          Horario horario, std::__cxx11::string tipoEspacio
+                                          Horario horario, std::string tipoEspacio
                                         )
 {
+    validarVacio(nombre);
+    validarVacio(descripcion);
+    validarNumero(precioPorHora);
+    validarNumero(capacidad);
+
     TipoEspacioDeportivo tipo = getTipo(tipoEspacio);
     Estado estado = getEstado(estadoEspacio);
 
@@ -21,11 +26,16 @@ EspacioDeportivo EspacioDeportivoSrv::add(std::__cxx11::string nombre, std::__cx
     return espacio;
 }
 
-EspacioDeportivo EspacioDeportivoSrv::mod(std::__cxx11::string nombre, std::__cxx11::string descripcion,
-                                          double precioPorHora, int capacidad, std::__cxx11::string estadoEspacio,
-                                          Horario horario, std::__cxx11::string tipoEspacio
+EspacioDeportivo EspacioDeportivoSrv::mod(std::string nombre, std::string descripcion,
+                                          double precioPorHora, int capacidad, std::string estadoEspacio,
+                                          Horario horario, std::string tipoEspacio
                                         )
 {
+    validarVacio(nombre);
+    validarVacio(descripcion);
+    validarNumero(precioPorHora);
+    validarNumero(capacidad);
+
     EspacioDeportivo espacio = get(nombre);
 
     auto tipo = getTipo(tipoEspacio);
@@ -42,12 +52,12 @@ EspacioDeportivo EspacioDeportivoSrv::mod(std::__cxx11::string nombre, std::__cx
     return espacio;
 }
 
-void EspacioDeportivoSrv::del(std::__cxx11::string nombre)
+void EspacioDeportivoSrv::del(std::string nombre)
 {
     dataBase.del(nombre);
 }
 
-EspacioDeportivo EspacioDeportivoSrv::get(std::__cxx11::string nombre)
+EspacioDeportivo EspacioDeportivoSrv::get(std::string nombre)
 {
     return dataBase.get(nombre);
 }
@@ -57,13 +67,13 @@ std::vector<EspacioDeportivo> EspacioDeportivoSrv::get()
     return dataBase.get();
 }
 
-TipoEspacioDeportivo EspacioDeportivoSrv::getTipo(std::__cxx11::string tipoEspacio)
+TipoEspacioDeportivo EspacioDeportivoSrv::getTipo(std::string tipoEspacio)
 {
     TipoEspacioDeportivo tipo(tipoEspacio);
     return tipo;
 }
 
-Estado EspacioDeportivoSrv::getEstado(std::__cxx11::string estadoEspacio)
+Estado EspacioDeportivoSrv::getEstado(std::string estadoEspacio)
 {
     if (estadoEspacio == "libre")
         return Estado::libre;
