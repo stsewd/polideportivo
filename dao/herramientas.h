@@ -8,6 +8,7 @@ class herramientas
 public:
     herramientas();
     std::string get(time_t *fecha);
+    std::time_t get(std::string fecha);
 };
 
 #endif // HERRAMIENTAS_H

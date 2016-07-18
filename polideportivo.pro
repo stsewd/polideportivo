@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     srv/espaciocomplementariosrv.cpp \
     srv/clientesrv.cpp \
     srv/tools.cpp \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    dao/herramientas.cpp
     dao/herramientas.cpp
 =======
     srv/empleadosrv.cpp \
@@ -62,7 +63,8 @@ HEADERS  += mainwindow.h \
     srv/espaciocomplementariosrv.h \
     srv/clientesrv.h \
     srv/tools.h \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    dao/herramientas.h
     dao/herramientas.h
 =======
     srv/empleadosrv.h \
