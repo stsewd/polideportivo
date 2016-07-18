@@ -12,6 +12,7 @@ Empleado::Empleado(
 {
 
 }
+
 Empleado::~Empleado()
 {
 
