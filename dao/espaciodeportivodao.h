@@ -6,7 +6,7 @@
 
 #include "../srv/espaciodeportivo.h"
 #include "conexiondb.h"
-#include "herramientas.h"
+#include "../srv/tools.h"
 
 class EspacioDeportivoDAO {
 public:
@@ -18,6 +18,7 @@ public:
     EspacioDeportivo get(std::string nombre);
     std::vector<EspacioDeportivo> get();
     void modTipo(std::string nombre, std::string tipo);
+
 };
 
 #endif // ESPACIODEPORTIVODAO_H

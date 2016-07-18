@@ -14,12 +14,16 @@ class Hora {
 public:
     int hora;
     int minuto;
+
+    std::string getHora();
 };
 
 class Horario {
 public:
     Hora entrada;
     Hora salida;
+
+
 };
 
 class Espacio {

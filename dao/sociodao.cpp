@@ -12,9 +12,9 @@ Socio socioDAO::add(Socio &socio)
         if(dataBase->resultset->rowsCount() == 0){
             dataBase->statement->execute("INSERT INTO Persona values('"+socio.cedula+"','"+socio.nombre+"','"+socio.apellido+"','"+socio.direccion+"','"+socio.telefono+"')");
         }
-        std::string fecha = getFecha(&socio.fechaIngreso);
+        //std::string fecha = getFecha(&socio.fechaIngreso);
         std::string esActivo= socio.estaActivo ? "1" : "0";
-        dataBase->statement->execute("INSERT INTO Socio values('" + socio.cedula + "', '" + fecha +"','"+ esActivo + "')");
+        dataBase->statement->execute("INSERT INTO Socio values('" + socio.cedula + "', '" + getFecha(&(socio.fechaIngreso)) +"','"+ esActivo + "')");
     }catch(...){
         throw "No se puedo ingresar el socio";
     }
@@ -57,7 +57,7 @@ Socio socioDAO::get(std::__cxx11::string cedula)
             socio.apellido= dataBase->resultset->getString(2);
             socio.direccion= dataBase->resultset->getString(3);
             socio.telefono= dataBase->resultset->getString(4);
-            socio.fechaIngreso = getFecha(dataBase->resultset->getString(6));
+            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(6));
             if(dataBase->resultset->getString(7)=="0"){
                 esActivo=false;
             }else{
@@ -88,7 +88,7 @@ std::vector<Socio> socioDAO::get()
             socio.apellido= dataBase->resultset->getString(2);
             socio.direccion= dataBase->resultset->getString(3);
             socio.telefono= dataBase->resultset->getString(4);
-            socio.fechaIngreso = getFecha(dataBase->resultset->getString(6));
+            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(6));
             if(dataBase->resultset->getString(7)=="0"){
                 esActivo=false;
             }else{

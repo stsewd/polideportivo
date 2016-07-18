@@ -6,15 +6,15 @@
 
 #include "../srv/espaciocomplementario.h"
 #include "conexiondb.h"
-#include "herramientas.h"
+#include "../srv/tools.h"
 
 class EspacioComplementarioDAO
 {
 public:
     EspacioComplementarioDAO();
     ConexionDB* dataBase;
-    EspacioComplementario add(EspacioComplementario& espacio);
-    EspacioComplementario mod(EspacioComplementario& espacio);
+    EspacioComplementario add(EspacioComplementario espacio);
+    EspacioComplementario mod(EspacioComplementario espacio);
     void del(std::string nombre);
     EspacioComplementario get(std::string nombre);
     std::vector<EspacioComplementario> get();

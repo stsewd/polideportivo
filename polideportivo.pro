@@ -34,8 +34,6 @@ SOURCES += main.cpp\
     srv/espaciocomplementariosrv.cpp \
     srv/clientesrv.cpp \
     srv/tools.cpp \
-    dao/herramientas.cpp \
-    dao/herramientas.cpp \
     srv/empleadosrv.cpp \
     srv/sociosrv.cpp \
     srv/reservasrv.cpp
@@ -61,7 +59,6 @@ HEADERS  += mainwindow.h \
     srv/espaciocomplementariosrv.h \
     srv/clientesrv.h \
     srv/tools.h \
-    dao/herramientas.h \
     srv/empleadosrv.h \
     srv/sociosrv.h \
     srv/reservasrv.h
@@ -71,3 +68,5 @@ FORMS    += mainwindow.ui \
     adminmainwindow.ui
 
 LIBS += -lmysqlcppconn
+
+QMAKE_CXXFLAGS += -std=c++14

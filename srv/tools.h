@@ -2,11 +2,22 @@
 #define TOOLS_H
 
 #include <string>
+#include "espacio.h"
+#include "espaciocomplementario.h"
+#include "espaciodeportivo.h"
+
 
 void validarCedula(std::string cedula);
 void validarTelefono(std::string telefono);
 void validarString(std::string str);
 void validarNumero(double num);
-
+TipoEspacioComplementario getTipoEspacioComplementario(std::string tipoEspacio);
+Estado getEstado(std::string estadoEspacio);
+TipoEspacioDeportivo getTipoEspacioDeportivo(std::string tipoEspacio);
+Estado getEstado(std::string estadoEspacio);
+std::string estadoToString(Estado estado);
+std::string getFecha(time_t *fecha);
+time_t getFechaString(std::string fecha);
+Horario getHorario(std::string horaentrada, std::string horaSalida);
 
 #endif // TOOLS_H
