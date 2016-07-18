@@ -16,7 +16,7 @@ EspacioComplementario EspacioComplementarioDAO::add(EspacioComplementario espaci
             //std::string fechaSalida = getFecha(espacio.horario.salida);
             dataBase->statement->execute("INSERT INTO Espacio values('"+
                                          espacio.nombre + "', '" + espacio.descripcion + "', '" +
-                                         std::to_string(espacio.precioPorhora) + "', '" + std::to_string(espacio.capacidad) + "', '" + getEstado(espacio.estado) +
+                                         std::to_string(espacio.precioPorhora) + "', '" + std::to_string(espacio.capacidad) + "', '" + estadoToString(espacio.estado) +
                                          "', '" + espacio.horario.entrada.getHora() + "', '" + espacio.horario.salida.getHora() + "')");
         }
         dataBase->statement->execute("INSERT INTO EspacioComplementario values('" + espacio.nombre + "', "+espacio.tipo.nombre+"')");
@@ -32,7 +32,7 @@ EspacioComplementario EspacioComplementarioDAO::mod(EspacioComplementario espaci
     //std::string fechaIngreso = getFecha(espacio.horario.entrada);
     //std::string fechaSalida = getFecha(espacio.horario.salida);
     std::string  consul = "UPDATE Espacio SET descripcion='" + espacio.descripcion + "', precioHora='" +
-            std::to_string(espacio.precioPorhora)+"', capacidad='" + std::to_string(espacio.capacidad) + "', estado='"+getEstado(espacio.estado)+
+            std::to_string(espacio.precioPorhora) + "', capacidad='" + std::to_string(espacio.capacidad) + "', estado='"+estadoToString(espacio.estado)+
             "', horarioEntrada='"+ espacio.horario.entrada.getHora() + "', horarioSalida='"+espacio.horario.salida.getHora() +"' WHERE nombre='" +
             espacio.nombre + "'";
     dataBase->statement->execute(consul);

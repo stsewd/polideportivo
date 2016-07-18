@@ -6,6 +6,7 @@
 
 #include "../srv/espaciodeportivo.h"
 #include "conexiondb.h"
+#include "../srv/tools.h"
 
 class EspacioDeportivoDAO {
 public:

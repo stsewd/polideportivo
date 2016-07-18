@@ -7,6 +7,7 @@
 
 #include "../srv/socio.h"
 #include "conexiondb.h"
+#include "../srv/tools.h"
 
 class socioDAO
 {

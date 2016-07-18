@@ -56,7 +56,7 @@ void EspacioDeportivoDAO::del(std::__cxx11::string nombre)
     }
 }
 
-EspacioDeportivo EspacioDeportivoDAO::get(std::__cxx11::string nombre)
+EspacioDeportivo EspacioDeportivoDAO::get(std::string nombre)
 {
     EspacioDeportivo espacio;
     try{

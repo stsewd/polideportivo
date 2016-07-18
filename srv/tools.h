@@ -17,7 +17,7 @@ TipoEspacioDeportivo getTipoEspacioDeportivo(std::string tipoEspacio);
 Estado getEstado(std::string estadoEspacio);
 std::string estadoToString(Estado estado);
 std::string getFecha(time_t *fecha);
-time_t getFecha(std::string fecha);
+time_t getFechaString(std::string fecha);
 Horario getHorario(std::string horaentrada, std::string horaSalida);
 
 #endif // TOOLS_H
