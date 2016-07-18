@@ -18,7 +18,10 @@ class EspacioDeportivo : public Espacio {
 public:
     TipoEspacioDeportivo tipo;
     EspacioDeportivo();
-    EspacioDeportivo(std::string nombre, std::string descripcion, double precioPorhora, int capacidad,Estado estado, Horario horario, TipoEspacioDeportivo TipoEspacio);
+    EspacioDeportivo(std::string nombre, std::string descripcion, double precioPorhora, int capacidad,
+                     Estado estado, Horario horario, TipoEspacioDeportivo TipoEspacio
+    );
+
     ~EspacioDeportivo();
 };
 
