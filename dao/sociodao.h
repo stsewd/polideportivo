@@ -18,6 +18,7 @@ public:
     void del(std::string cedula);
     Socio get(std::string cedula);
     std::vector<Socio> get();
+    void modEsActivo(std::string cedula, bool estado);
 };
 
 #endif // SOCIODAO_H

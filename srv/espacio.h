@@ -11,11 +11,13 @@ enum class Estado {
 };
 
 class Hora {
+public:
     int hora;
     int minuto;
 };
 
 class Horario {
+public:
     Hora entrada;
     Hora salida;
 };

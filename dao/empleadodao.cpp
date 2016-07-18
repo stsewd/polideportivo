@@ -59,8 +59,8 @@ Empleado EmpleadoDAO::get(std::string cedula)
             empleado.apellido= dataBase->resultset->getString(2);
             empleado.direccion= dataBase->resultset->getString(3);
             empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = dataBase->resultset->getString(5);
-            if(dataBase->resultset->getString(6)=="0"){
+            empleado.clave = dataBase->resultset->getString(6);
+            if(dataBase->resultset->getString(7)=="0"){
                 esAdministrador=false;
             }else{
                 esAdministrador=true;
@@ -87,8 +87,8 @@ std::vector<Empleado> EmpleadoDAO::get()
             empleado.apellido= dataBase->resultset->getString(2);
             empleado.direccion= dataBase->resultset->getString(3);
             empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = dataBase->resultset->getString(5);
-            if(dataBase->resultset->getString(6)=="0"){
+            empleado.clave = dataBase->resultset->getString(6);
+            if(dataBase->resultset->getString(7)=="0"){
                 esAdministrador=false;
             }else{
                 esAdministrador=true;
@@ -120,7 +120,7 @@ void EmpleadoDAO::modIsAdministrador(std::__cxx11::string cedula, bool clave)
     try{
         dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where cedula = '"+cedula+"'");
         std::string esAdministrador = clave ? "1" : "0";
-        dataBase->statement->execute("UPDATE Empleado SET clave = '"+ esAdministrador +"' where idEmpleado='"+cedula+"'");
+        dataBase->statement->execute("UPDATE Empleado SET esAdministrador = '"+ esAdministrador +"' where idEmpleado='"+cedula+"'");
 
     }catch(...){
         throw "No se puedo modificar la clave del empleado";

@@ -46,7 +46,7 @@ Cliente ClienteDAO::get(std::string cedula)
 {
     Cliente cliente;
     try{
-        dataBase->resultset = dataBase->statement->executeQuery("select * from Polideportivo.Persona P, Polideportivo.Cliente C where P.cedula = C.idCliente");
+        dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Cliente C where P.cedula = C.idCliente");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Cliente where idCliente='"+cedula+"'");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idCliente='"+cedula+"'");
         while(dataBase->resultset->next()){
