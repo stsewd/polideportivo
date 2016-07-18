@@ -15,3 +15,10 @@ Espacio::~Espacio()
 {
 
 }
+
+std::string Hora::getHora()
+{
+    std::string ret = this->hora +":"+ this->minuto;
+    return (ret);
+
+}

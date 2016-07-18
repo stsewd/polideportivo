@@ -1,38 +1,39 @@
 #include "espaciocomplementariodao.h"
 
 
+
 EspacioComplementarioDAO::EspacioComplementarioDAO()
 {
     dataBase = new ConexionDB("localhost:3306","root","1234","Polideportivo");
 }
 
-EspacioComplementario EspacioComplementarioDAO::add(EspacioComplementario &espacio)
+EspacioComplementario EspacioComplementarioDAO::add(EspacioComplementario espacio)
 {
     try{
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio WHERE nombre = '" + espacio.nombre);
-        if(dataBase->resultset->rowsCount()==0){
-            std::string fechaIngreso = getFecha(espacio.horario.entrada);
-            std::string fechaSalida = getFecha(espacio.horario.salida);
+        if (dataBase->resultset->rowsCount()==0) {
+            //std::string fechaIngreso = getFecha(espacio.horario.entrada);
+            //std::string fechaSalida = getFecha(espacio.horario.salida);
             dataBase->statement->execute("INSERT INTO Espacio values('"+
                                          espacio.nombre + "', '" + espacio.descripcion + "', '" +
-                                         espacio.precioPorhora + "', '" + espacio.capacidad + "', '" + espacio.estado +
-                                         "', '" + fechaIngreso + "', '" + fechaSalida + "')");
+                                         std::to_string(espacio.precioPorhora) + "', '" + std::to_string(espacio.capacidad) + "', '" + getEstado(espacio.estado) +
+                                         "', '" + espacio.horario.entrada.getHora() + "', '" + espacio.horario.salida.getHora() + "')");
         }
-        dataBase->statement->execute("INSERT INTO EspacioComplementario values('" + espacio.nombre + "', "+espacio.tipo+"')");
+        dataBase->statement->execute("INSERT INTO EspacioComplementario values('" + espacio.nombre + "', "+espacio.tipo.nombre+"')");
     }catch(...){
         throw "No se puede ingresar el Espacio Complementario";
     }
     return espacio;
 }
 
-EspacioComplementario EspacioComplementarioDAO::mod(EspacioComplementario &espacio)
+EspacioComplementario EspacioComplementarioDAO::mod(EspacioComplementario espacio)
 {
     try{
-    std::string fechaIngreso = getFecha(espacio.horario.entrada);
-    std::string fechaSalida = getFecha(espacio.horario.salida);
+    //std::string fechaIngreso = getFecha(espacio.horario.entrada);
+    //std::string fechaSalida = getFecha(espacio.horario.salida);
     std::string  consul = "UPDATE Espacio SET descripcion='" + espacio.descripcion + "', precioHora='" +
-            espacio.precioPorhora+"', capacidad='" + espacio.capacidad + "', estado='"+espacio.estado+
-            "', horarioEntrada='"+fechaIngreso+"', horarioSalida='"+fechaSalida+"' WHERE nombre='" +
+            std::to_string(espacio.precioPorhora)+"', capacidad='" + std::to_string(espacio.capacidad) + "', estado='"+getEstado(espacio.estado)+
+            "', horarioEntrada='"+ espacio.horario.entrada.getHora() + "', horarioSalida='"+espacio.horario.salida.getHora() +"' WHERE nombre='" +
             espacio.nombre + "'";
     dataBase->statement->execute(consul);
     }catch(...){
@@ -51,7 +52,7 @@ void EspacioComplementarioDAO::del(std::__cxx11::string nombre)
     }
 }
 
-EspacioComplementario EspacioComplementarioDAO::get(std::__cxx11::string nombre)
+EspacioComplementario EspacioComplementarioDAO::get(std::string nombre)
 {
     EspacioComplementario espacio;
     try{
@@ -63,10 +64,9 @@ EspacioComplementario EspacioComplementarioDAO::get(std::__cxx11::string nombre)
         double num = atof( dataBase->resultset->getString(2).c_str() );
         espacio.precioPorhora = num;
         espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = dataBase->resultset->getString(4);
-        espacio.horario.entrada=getFecha(dataBase->resultset->getString(4));
-        espacio.horario.salida=getFecha(dataBase->resultset->getString(6));
-        espacio.tipo=dataBase->resultset->getString(8);
+        espacio.estado = getEstado(dataBase->resultset->getString(4));
+        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
+        espacio.tipo.nombre=dataBase->resultset->getString(8);
     }
     }catch(...){
         throw "No  se puede obtener espacio complementario";
@@ -79,18 +79,16 @@ std::vector<EspacioComplementario> EspacioComplementarioDAO::get()
     EspacioComplementario espacio;
     std::vector<EspacioComplementario> espacios;
     try{
-    dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioComplementario D WHERE D.idEspacioComplementario='" +nombre +
-                                                          "' AND E.nombre = D.idEspacioComplementario");
+    dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioComplementario D WHERE E.nombre = D.idEspacioComplementario");
     while(dataBase->resultset->next()){
         espacio.nombre = dataBase->resultset->getString(0);
         espacio.descripcion = dataBase->resultset->getString(1);
         double num = atof( dataBase->resultset->getString(2).c_str() );
         espacio.precioPorhora = num;
         espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = dataBase->resultset->getString(4);
-        espacio.horario.entrada=getFecha(dataBase->resultset->getString(4));
-        espacio.horario.salida=getFecha(dataBase->resultset->getString(6));
-        espacio.tipo=dataBase->resultset->getString(8);
+        espacio.estado = getEstado(dataBase->resultset->getString(4));
+        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
+        espacio.tipo.nombre = dataBase->resultset->getString(8);
         espacios.push_back(espacio);
     }
     }catch(...){

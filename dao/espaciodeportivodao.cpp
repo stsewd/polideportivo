@@ -1,5 +1,6 @@
 #include "espaciodeportivodao.h"
-
+#include <string>
+#include "../srv/tools.h"
 
 EspacioDeportivoDAO::EspacioDeportivoDAO()
 {
@@ -12,14 +13,16 @@ EspacioDeportivo EspacioDeportivoDAO::add(EspacioDeportivo &espacio)
     try{
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio WHERE nombre = '" + espacio.nombre);
         if(dataBase->resultset->rowsCount()==0){
-            std::string fechaIngreso = getFecha(espacio.horario.entrada);
-            std::string fechaSalida = getFecha(espacio.horario.salida);
+            //std::string fechaIngreso = getFecha(espacio.horario.entrada);
+            //std::string fechaSalida = getFecha(espacio.horario.salida);
             dataBase->statement->execute("INSERT INTO Espacio values('"+
                                          espacio.nombre + "', '" + espacio.descripcion + "', '" +
-                                         espacio.precioPorhora + "', '" + espacio.capacidad + "', '" + espacio.estado +
-                                         "', '" + fechaIngreso + "', '" + fechaSalida + "')");
+                                         std::to_string(espacio.precioPorhora) + "', '" +
+                                         std::to_string(espacio.capacidad) + "', '" + estadoToString(espacio.estado) +
+                                         "', '" + espacio.horario.entrada.getHora() + "', '" + espacio.horario.salida.getHora() + "')"
+            );
         }
-        dataBase->statement->execute("INSERT INTO EspacioDeportivo values('" + espacio.nombre + "', "+espacio.tipo+"')");
+        dataBase->statement->execute("INSERT INTO EspacioDeportivo values('" + espacio.nombre + "', " + espacio.tipo.nombre + "')");
     }catch(...){
         throw "No se puede ingresar el Espacio Deportivo";
     }
@@ -29,11 +32,12 @@ EspacioDeportivo EspacioDeportivoDAO::add(EspacioDeportivo &espacio)
 EspacioDeportivo EspacioDeportivoDAO::mod(EspacioDeportivo &espacio)
 {
     try{
-    std::string fechaIngreso = getFecha(espacio.horario.entrada);
-    std::string fechaSalida = getFecha(espacio.horario.salida);
+    //std::string fechaIngreso = getFecha(espacio.horario.entrada);
+    //std::string fechaSalida = getFecha(espacio.horario.salida);
     std::string  consul = "UPDATE Espacio SET descripcion='" + espacio.descripcion + "', precioHora='" +
-            espacio.precioPorhora+"', capacidad='" + espacio.capacidad + "', estado='"+espacio.estado+
-            "', horarioEntrada='"+fechaIngreso+"', horarioSalida='"+fechaSalida+"' WHERE nombre='" +
+            std::to_string(espacio.precioPorhora) + "', capacidad='" + std::to_string(espacio.capacidad) +
+            "', estado='" + estadoToString(espacio.estado) +
+            "', horarioEntrada='" + espacio.horario.entrada.getHora() + "', horarioSalida='" + espacio.horario.salida.getHora() +"' WHERE nombre='" +
             espacio.nombre +"'";
     dataBase->statement->execute(consul);
     }catch(...){
@@ -64,10 +68,9 @@ EspacioDeportivo EspacioDeportivoDAO::get(std::__cxx11::string nombre)
         double num = atof( dataBase->resultset->getString(2).c_str() );
         espacio.precioPorhora = num;
         espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = dataBase->resultset->getString(4);
-        espacio.horario.entrada=getFecha(dataBase->resultset->getString(4));
-        espacio.horario.salida=getFecha(dataBase->resultset->getString(6));
-        espacio.tipo=dataBase->resultset->getString(8);
+        espacio.estado = getEstado(dataBase->resultset->getString(4).c_str());
+        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
+        espacio.tipo.nombre = dataBase->resultset->getString(8);
     }
     }catch(...){
         throw "No  se puede obtener espacio deportivo";
@@ -87,10 +90,9 @@ std::vector<EspacioDeportivo> EspacioDeportivoDAO::get()
         double num = atof( dataBase->resultset->getString(2).c_str() );
         espacio.precioPorhora = num;
         espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = dataBase->resultset->getString(4);
-        espacio.horario.entrada=getFecha(dataBase->resultset->getString(4));
-        espacio.horario.salida=getFecha(dataBase->resultset->getString(6));
-        espacio.tipo=dataBase->resultset->getString(8);
+        espacio.estado = getEstado(dataBase->resultset->getString(4));
+        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
+        espacio.tipo.nombre = dataBase->resultset->getString(8);
         espacios.push_back(espacio);
     }
     }catch(...){
@@ -99,7 +101,7 @@ std::vector<EspacioDeportivo> EspacioDeportivoDAO::get()
     return espacios;
 }
 
-void EspacioDeportivoDAO::modTipo(std::__cxx11::string nombre, std::__cxx11::string tipo)
+void EspacioDeportivoDAO::modTipo(std::string nombre, std::__cxx11::string tipo)
 {
     try{
         dataBase->statement->execute("UPDATE FROM EspacioDeportivo SET tipoEspacioDeportivo='" + tipo +
