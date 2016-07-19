@@ -24,6 +24,8 @@ private slots:
 
     void on_actionSalir_triggered();
 
+    void on_espaciosComboBox_currentIndexChanged(int index);
+
 private:
     Ui::AdminMainWindow *ui;
 public:
@@ -31,6 +33,9 @@ public:
 public:
     void cargarTablaEspacios();
     void cargarTablaEmpleados();
+    void cargarEspaciosDeportivos();
+    void cargarEspaciosComplementarios();
+    void cargarEmpleados();
 };
 
 #endif // ADMINMAINWINDOW_H
