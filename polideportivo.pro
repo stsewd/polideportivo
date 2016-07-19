@@ -38,7 +38,7 @@ SOURCES += main.cpp\
     srv/reservasrv.cpp \
     dao/reservadao.cpp
     dao/reserva.cpp \
-    dao/reservadao.cpp
+    dao/reservadao.cpp \
     srv/reservasrv.cpp
 
 
@@ -66,9 +66,10 @@ HEADERS  += mainwindow.h \
     srv/empleadosrv.h \
     srv/sociosrv.h \
     srv/reservasrv.h \
-    dao/reservadao.h
-    dao/reservadao.h
+    dao/reservadao.h \
+    dao/reservadao.h \
     srv/reservasrv.h
+
 
 
 FORMS    += mainwindow.ui \
