@@ -45,6 +45,11 @@ void ReservaSrv::del(std::string cedulaCliente, std::string nombreEspacio, time_
     dataBase.del(cedulaCliente, nombreEspacio, fechaReservacion, fechaFinReservacion);
 }
 
+Reserva ReservaSrv::get(std::string cedula, std::string nombreEspacio, time_t fechaReservacion, time_t fechaFinReservacion)
+{
+    return get(cedula, nombreEspacio, fechaReservacion, fechaFinReservacion);
+}
+
 std::vector<Reserva> ReservaSrv::get(std::string cedulaCliente)
 {
     return dataBase.get(cedulaCliente);
