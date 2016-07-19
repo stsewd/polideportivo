@@ -54,7 +54,7 @@ void EspacioComplementarioDAO::del(std::__cxx11::string nombre)
 
 EspacioComplementario EspacioComplementarioDAO::get(std::string nombre)
 {
-    EspacioComplementario espacio = NULL;
+    EspacioComplementario espacio;
     try{
     dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioComplementario D WHERE D.idEspacioComplementario='" +nombre +
                                                           "' AND E.nombre = D.idEspacioComplementario");

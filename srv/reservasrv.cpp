@@ -40,7 +40,7 @@ Reserva ReservaSrv::mod(std::string cedulaCliente, std::string nombreEspacio, ti
     return reserva;
 }
 
-void ReservaSrv::del(std::string cedula, std::string nombreEspacio, time_t fechaReservacion, time_t fechaFinReservacion)
+void ReservaSrv::del(std::string cedulaCliente, std::string nombreEspacio, time_t fechaReservacion, time_t fechaFinReservacion)
 {
     dataBase.del(cedulaCliente, nombreEspacio, fechaReservacion, fechaFinReservacion);
 }

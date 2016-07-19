@@ -19,12 +19,12 @@ class reservadao
 public:
     reservadao();
     ConexionDB *dataBase;
-    ClienteDAO *clientedao;
-    EspacioComplementarioDAO *espacioComplementariodao;
-    EspacioDeportivoDAO *espacioDeportivodao;
+    ClienteDAO clientedao;
+    EspacioComplementarioDAO espacioComplementariodao;
+    EspacioDeportivoDAO espacioDeportivodao;
     Reserva add(Reserva reserva);
     Reserva mod(Reserva reserva);
-    void del(std::string cedula, std::string nombreEspacio, time_t fechaReservacion);
+    void del(std::string cedula, std::string nombreEspacio, time_t fechaReservacion, time_t fechafinReservacion);
     std::vector<Reserva> get(std::string cedulaCliente);  //saca todas las reservas de un cliente especifico
     std::vector<Reserva> get(time_t fecha);             //saca las reservas de un dia o de un dia
     std::vector<Reserva> get(std::string cedulaCliente, time_t fecha);  //saca la reserva de un cliete de un dia especifico

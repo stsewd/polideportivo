@@ -47,7 +47,7 @@ EspacioDeportivo EspacioDeportivoDAO::mod(EspacioDeportivo &espacio)
     return espacio;
 }
 
-void EspacioDeportivoDAO::del(std::__cxx11::string nombre)
+void EspacioDeportivoDAO::del(std::string nombre)
 {
     try{
         dataBase->statement->execute("DELETE FROM EspacioDeportivo WHERE idEspacioDeportivo='"+nombre+"'");
@@ -101,7 +101,7 @@ std::vector<EspacioDeportivo> EspacioDeportivoDAO::get()
     return espacios;
 }
 
-void EspacioDeportivoDAO::modTipo(std::string nombre, std::__cxx11::string tipo)
+void EspacioDeportivoDAO::modTipo(std::string nombre, std::string tipo)
 {
     try{
         dataBase->statement->execute("UPDATE FROM EspacioDeportivo SET tipoEspacioDeportivo='" + tipo +
