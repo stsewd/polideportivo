@@ -11,7 +11,6 @@ class Detalle
     int numDetalle;
     int cantidad;
     std::string descripcion;
-    int cantidad;
     double precio;
 };
 
