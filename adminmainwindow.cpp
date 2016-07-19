@@ -6,6 +6,8 @@ AdminMainWindow::AdminMainWindow(QWidget *parent) :
     ui(new Ui::AdminMainWindow)
 {
     ui->setupUi(this);
+    cargarTablaEspacios();
+    cargarTablaEmpleados();
 }
 
 AdminMainWindow::~AdminMainWindow()
@@ -22,4 +24,22 @@ void AdminMainWindow::on_actionCerrarSesion_triggered()
 void AdminMainWindow::on_actionSalir_triggered()
 {
     this->close();
+}
+
+void AdminMainWindow::cargarTablaEspacios()
+{
+    QStringList headers;
+    headers << "#" << "Nombre" << "Capacidad" << "Tipo" << "Estado";
+
+    ui->espaciosTable->setColumnCount(5);
+    ui->espaciosTable->setHorizontalHeaderLabels(headers);
+    // QHeaderView header;
+    // header << "#" << "Test";
+    // ui->espaciosTable->setHorizontalHeader(&header);
+
+}
+
+void AdminMainWindow::cargarTablaEmpleados()
+{
+    ui->empleadosTable->setColumnCount(5);
 }

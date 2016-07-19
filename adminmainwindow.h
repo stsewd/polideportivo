@@ -28,6 +28,9 @@ private:
     Ui::AdminMainWindow *ui;
 public:
     LoginWindow* loginWindow;
+public:
+    void cargarTablaEspacios();
+    void cargarTablaEmpleados();
 };
 
 #endif // ADMINMAINWINDOW_H
