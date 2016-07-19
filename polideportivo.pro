@@ -41,7 +41,9 @@ SOURCES += main.cpp\
     srv/factura.cpp \
     dao/facturadao.cpp \
     agregarespaciowindow.cpp \
-    agregarclientewindow.cpp
+    agregarclientewindow.cpp \
+    agregarempleadowindow.cpp \
+    agregarsociowindow.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -72,7 +74,9 @@ HEADERS  += mainwindow.h \
     srv/factura.h \
     dao/facturadao.h \
     agregarespaciowindow.h \
-    agregarclientewindow.h
+    agregarclientewindow.h \
+    agregarempleadowindow.h \
+    agregarsociowindow.h
 
 
 
@@ -80,7 +84,9 @@ FORMS    += mainwindow.ui \
     loginwindow.ui \
     adminmainwindow.ui \
     agregarespaciowindow.ui \
-    agregarclientewindow.ui
+    agregarclientewindow.ui \
+    agregarempleadowindow.ui \
+    agregarsociowindow.ui
 
 LIBS += -lmysqlcppconn
 
