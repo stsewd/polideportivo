@@ -18,6 +18,8 @@ public:
 private slots:
     void on_cmbTipoEspacio_currentIndexChanged(int index);
 
+    void on_cmbTipoEspacio_activated(int index);
+
 private:
     Ui::AgregarEspacioWindow *ui;
 };

@@ -28,6 +28,9 @@ private:
     Ui::MainWindow *ui;
 public:
     LoginWindow* loginWindow;
+    void cargarTablaEspacios();
+    void cargarEspaciosDeportivos();
+    void cargarEspaciosComplementarios();
 };
 
 #endif // MAINWINDOW_H
