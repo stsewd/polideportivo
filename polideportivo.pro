@@ -39,7 +39,8 @@ SOURCES += main.cpp\
     dao/reservadao.cpp \
     srv/reservasrv.cpp \
     srv/factura.cpp \
-    dao/facturadao.cpp
+    dao/facturadao.cpp \
+    agregarespaciowindow.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -68,13 +69,15 @@ HEADERS  += mainwindow.h \
     dao/reservadao.h \
     srv/reservasrv.h \
     srv/factura.h \
-    dao/facturadao.h
+    dao/facturadao.h \
+    agregarespaciowindow.h
 
 
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
-    adminmainwindow.ui
+    adminmainwindow.ui \
+    agregarespaciowindow.ui
 
 LIBS += -lmysqlcppconn
 
