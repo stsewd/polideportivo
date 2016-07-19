@@ -62,12 +62,32 @@ time_t getFechaString(char* fecha)
 Horario getHorario(std::string horaEntrada, std::string horaSalida)
 {
     Hora entrada, salida;
-    entrada.hora = std::atoi(horaEntrada.substr(0,2).c_str());
-    entrada.minuto = std::atoi(horaEntrada.substr(3,6).c_str());
-    salida.hora = std::atoi(horaSalida.substr(0,2).c_str());
-    salida.minuto = std::atoi(horaSalida.substr(3,6).c_str());
+    std::vector<std::string> elementos = split(horaEntrada,':');
+    entrada.hora = std::atoi(elementos[0].c_str());
+    entrada.minuto = std::atoi(elementos[1].c_str());
+    elementos.clear();
+    elementos=split(horaSalida,':');
+    salida.hora = std::atoi(elementos[0].c_str());
+    salida.minuto = std::atoi(elementos[1].c_str());
     Horario horario;
     horario.entrada = entrada;
     horario.salida = salida;
     return horario;
+}
+
+
+std::vector<std::string> split(std::string texto, char delim)
+{
+    std::vector<std::string> elementos;
+    std::string aux="";
+    for(char a : texto){
+        if(a!=delim){
+            aux+=a;
+        }else{
+            elementos.push_back(aux);
+            aux="";
+        }
+    }
+    elementos.push_back(aux);
+    return elementos;
 }

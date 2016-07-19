@@ -8,12 +8,7 @@ Espacio::Espacio(std::string nombre, std::string descripcion, double precioPorho
                  int capacidad, Estado estado, Horario horario
                 )
 {
-    this->nombre = nombre;
-    this->descripcion = descripcion;
-    this->precioPorhora = precioPorhora;
-    this->capacidad = capacidad;
-    this->estado = estado;
-    this->horario = horario;
+
 }
 
 Espacio::~Espacio()
@@ -23,7 +18,7 @@ Espacio::~Espacio()
 
 std::string Hora::getHora()
 {
-    std::string ret = this->hora +":"+ this->minuto;
+    std::string ret = std::to_string(this->hora) +":"+ std::to_string(this->minuto) + ":00";
     return (ret);
 
 }
