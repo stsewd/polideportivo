@@ -18,7 +18,7 @@ Factura facturadao::add(Factura factura)
                                      std::to_string(factura.abono) + "', '" + std::to_string(factura.total) + "')"
                                      );
     }catch(...){
-        throw "Error al ingresar la factura";
+        throw std::string("Error al ingresar la factura");
     }
     return factura;
 }
@@ -31,7 +31,7 @@ void facturadao::del(int numFactura, std::string cedula)
                                      );
 
     }catch(...){
-        throw "No se puede eliminar la factura";
+        throw std::string("No se puede eliminar la factura");
     }
 }
 
@@ -59,7 +59,7 @@ Factura facturadao::get(int numFactura, std::string cedula)
         factura.subTotal = factura.total - factura.abono;
         factura.descripcion = productos;
     }catch(...){
-        throw "Error al ingresar la factura";
+        throw std::string("Error al ingresar la factura");
     }
     return factura;
 
@@ -73,7 +73,7 @@ Factura facturadao::agregarAbono(int numFactura, std::string cedula, double abon
     dataBase->statement->execute("UPDATE Factura SET abono='" + std::to_string(factura.abono+abono) + "', where idFactura='"+
                                  std::to_string(factura.numFactura) + "'");
     }catch(...){
-        throw "Error al ingresar la factura";
+        throw std::string("Error al ingresar la factura");
     }
     return factura;
 }
@@ -105,7 +105,7 @@ std::vector<Factura> facturadao::get(std::string cedula)
             facturas.push_back(factura);
         }
     }catch(...){
-        throw "Error al ingresar la factura";
+        throw std::string("Error al ingresar la factura");
     }
     return facturas;
 }
@@ -137,7 +137,7 @@ std::vector<Factura> facturadao::get()
             facturas.push_back(factura);
         }
     }catch(...){
-        throw "Error al ingresar la factura";
+        throw std::string("Error al ingresar la factura");
     }
     return facturas;
 }

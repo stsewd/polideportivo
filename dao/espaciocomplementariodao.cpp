@@ -21,7 +21,7 @@ EspacioComplementario EspacioComplementarioDAO::add(EspacioComplementario espaci
         }
         dataBase->statement->execute("INSERT INTO EspacioComplementario values('" + espacio.nombre + "', "+espacio.tipo.nombre+"')");
     }catch(...){
-        throw "No se puede ingresar el Espacio Complementario";
+        throw std::string("No se puede ingresar el Espacio Complementario");
     }
     return espacio;
 }
@@ -37,7 +37,7 @@ EspacioComplementario EspacioComplementarioDAO::mod(EspacioComplementario espaci
             espacio.nombre + "'";
     dataBase->statement->execute(consul);
     }catch(...){
-        throw "No se puede actualizar el espacio Complementario";
+        throw std::string("No se puede actualizar el espacio Complementario");
     }
 
     return espacio;
@@ -48,7 +48,7 @@ void EspacioComplementarioDAO::del(std::__cxx11::string nombre)
     try{
         dataBase->statement->execute("DELETE FROM EspacioComplementario WHERE idEspacioComplementario='"+nombre+"'");
     }catch(...){
-        throw "No  se puede eliminar el espacio Complementario";
+        throw std::string("No  se puede eliminar el espacio Complementario");
     }
 }
 
@@ -69,7 +69,7 @@ EspacioComplementario EspacioComplementarioDAO::get(std::string nombre)
         espacio.tipo.nombre=dataBase->resultset->getString(8);
     }
     }catch(...){
-        throw "No  se puede obtener espacio complementario";
+        throw std::string("No  se puede obtener espacio complementario");
     }
     return espacio;
 }
@@ -92,7 +92,7 @@ std::vector<EspacioComplementario> EspacioComplementarioDAO::get()
         espacios.push_back(espacio);
     }
     }catch(...){
-        throw "No  se puede obtener espacio complementario";
+        throw std::string("No  se puede obtener espacio complementario");
     }
     return espacios;
 }
@@ -103,6 +103,6 @@ void EspacioComplementarioDAO::modTipo(std::__cxx11::string nombre, std::__cxx11
         dataBase->statement->execute("UPDATE FROM EspacioComplementario SET tipoEspacioComplementario='" + tipo +
                                      "' WHERE idEspacioComplementario='"+nombre+"'");
     }catch(...){
-        throw "No  se puede actualizar el espacio complementario";
+        throw std::string("No  se puede actualizar el espacio complementario");
     }
 }

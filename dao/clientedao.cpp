@@ -14,7 +14,7 @@ Cliente ClienteDAO::add(Cliente &cliente)
         }
         dataBase->statement->execute("INSERT INTO Cliente values('"+cliente.cedula+"')");
     }catch(...){
-        throw "No se puedo ingresar el cliente";
+        throw std::string("No se puedo ingresar el cliente");
     }
     return cliente;
 }
@@ -26,7 +26,7 @@ Cliente ClienteDAO::mod(Cliente &cliente)
                 cliente.direccion+"', telefono = '"+cliente.telefono+"' WHERE cedula='"+cliente.cedula+"'";
         dataBase->statement->execute(consul);
     }catch(...){
-        throw "No se puede modificar";
+        throw std::string("No se puede modificar");
     }
 
     return cliente;
@@ -37,7 +37,7 @@ void ClienteDAO::del(std::string cedula)
     try{
         dataBase->statement->execute("DELETE FROM Cliente where idCliente='"+cedula+"'");
     }catch(...){
-        throw "No se puede eliminar";
+        throw std::string("No se puede eliminar");
     }
 }
 
@@ -57,7 +57,7 @@ Cliente ClienteDAO::get(std::string cedula)
             cliente.telefono= dataBase->resultset->getString(4);
         }
     }catch(...){
-        throw "No se puede extraer el cliente";
+        throw std::string("No se puede extraer el cliente");
     }
 
     return cliente;
@@ -78,7 +78,7 @@ std::vector<Cliente> ClienteDAO::get()
             clientes.push_back(cliente);
         }
     }catch(...){
-        throw "No se puede extraer la lista";
+        throw std::string("No se puede extraer la lista");
     }
 
     return clientes;

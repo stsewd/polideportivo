@@ -24,7 +24,7 @@ EspacioDeportivo EspacioDeportivoDAO::add(EspacioDeportivo &espacio)
         }
         dataBase->statement->execute("INSERT INTO EspacioDeportivo values('" + espacio.nombre + "', " + espacio.tipo.nombre + "')");
     }catch(...){
-        throw "No se puede ingresar el Espacio Deportivo";
+        throw std::string("No se puede ingresar el Espacio Deportivo");
     }
     return espacio;
 }
@@ -41,7 +41,7 @@ EspacioDeportivo EspacioDeportivoDAO::mod(EspacioDeportivo &espacio)
             espacio.nombre +"'";
     dataBase->statement->execute(consul);
     }catch(...){
-        throw "No se puede actualizar";
+        throw std::string("No se puede actualizar");
     }
 
     return espacio;
@@ -52,7 +52,7 @@ void EspacioDeportivoDAO::del(std::string nombre)
     try{
         dataBase->statement->execute("DELETE FROM EspacioDeportivo WHERE idEspacioDeportivo='"+nombre+"'");
     }catch(...){
-        throw "No  se puede eliminar";
+        throw std::string("No  se puede eliminar");
     }
 }
 
@@ -73,7 +73,7 @@ EspacioDeportivo EspacioDeportivoDAO::get(std::string nombre)
         espacio.tipo.nombre = dataBase->resultset->getString(8);
     }
     }catch(...){
-        throw "No  se puede obtener espacio deportivo";
+        throw std::string("No  se puede obtener espacio deportivo");
     }
     return espacio;
 }
@@ -96,7 +96,7 @@ std::vector<EspacioDeportivo> EspacioDeportivoDAO::get()
         espacios.push_back(espacio);
     }
     }catch(...){
-        throw "No  se puede obtener la lista de espacio deportivos";
+        throw std::string("No  se puede obtener la lista de espacio deportivos");
     }
     return espacios;
 }
@@ -107,7 +107,7 @@ void EspacioDeportivoDAO::modTipo(std::string nombre, std::string tipo)
         dataBase->statement->execute("UPDATE FROM EspacioDeportivo SET tipoEspacioDeportivo='" + tipo +
                                      "' WHERE idEspacioDeportivo='"+nombre+"'");
     }catch(...){
-        throw "No  se puede actualizar el espacio deportivo";
+        throw std::string("No  se puede actualizar el espacio deportivo");
     }
 }
 

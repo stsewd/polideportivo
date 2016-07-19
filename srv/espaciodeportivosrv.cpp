@@ -85,5 +85,5 @@ Estado EspacioDeportivoSrv::getEstado(std::string estadoEspacio)
     else if (estadoEspacio == "mantenimiento")
         return Estado::mantenimiento;
     else
-        throw "Estado no válido";
+        throw std::string("Estado no válido");
 }

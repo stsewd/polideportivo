@@ -19,7 +19,7 @@ Empleado EmpleadoDAO::add(Empleado &empleado)
         dataBase->statement->execute("INSERT INTO Empleado values('" + empleado.cedula + "','" + empleado.clave + "','" + esAdministrador + "')");
 
     }catch(...){
-        throw "No se puedo ingresar el empleado";
+        throw std::string("No se puedo ingresar el empleado");
     }
     return empleado;
 }
@@ -32,7 +32,7 @@ Empleado EmpleadoDAO::mod(Empleado &empleado)
         dataBase->statement->execute(consul);
 
     }catch(...){
-        throw "No se puede modificar";
+        throw std::string("No se puede modificar");
     }
 
     return empleado;
@@ -43,34 +43,29 @@ void EmpleadoDAO::del(std::string cedula)
     try{
         dataBase->statement->execute("DELETE FROM Empleado where idEmpleado='"+cedula+"'");
     }catch(...){
-        throw "No se puede eliminar";
+        throw std::string("No se puede eliminar");
     }
 }
 
 Empleado EmpleadoDAO::get(std::string cedula)
 {
     Empleado empleado;
-    bool esAdministrador = false;
     try{
         dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Empleado C where C.idEmpleado='" + cedula + "' and P.cedula = C.idEmpleado ");
-        while(dataBase->resultset->next()){
-            empleado.cedula = dataBase->resultset->getString(0);
-            empleado.nombre = dataBase->resultset->getString(1);
-            empleado.apellido= dataBase->resultset->getString(2);
-            empleado.direccion= dataBase->resultset->getString(3);
-            empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = dataBase->resultset->getString(6);
-            if(dataBase->resultset->getString(7)=="0"){
-                esAdministrador=false;
-            }else{
-                esAdministrador=true;
-            }
-            empleado.esAdministrador = esAdministrador;
+        if (dataBase->resultset->next()){
+            empleado.cedula = dataBase->resultset->getString(1);
+            empleado.nombre = dataBase->resultset->getString(2);
+            empleado.apellido= dataBase->resultset->getString(3);
+            empleado.direccion= dataBase->resultset->getString(4);
+            empleado.telefono= dataBase->resultset->getString(5);
+            empleado.clave = dataBase->resultset->getString(7);
+            empleado.esAdministrador = dataBase->resultset->getString(8) == "1";
+        } else {
+            throw std::string("Usuario no existe");
         }
     }catch(...){
-        throw "No se puede extraer el empleado";
+        throw std::string("No se puede extraer el empleado");
     }
-
     return empleado;
 }
 
@@ -97,7 +92,7 @@ std::vector<Empleado> EmpleadoDAO::get()
             empleados.push_back(empleado);
         }
     }catch(...){
-        throw "No se puede extraer el empleado";
+        throw std::string("No se puede extraer el empleado");
     }
 
     return empleados;
@@ -111,7 +106,7 @@ void EmpleadoDAO::modClave(std::__cxx11::string cedula, std::__cxx11::string cla
         dataBase->statement->execute("UPDATE Empleado SET clave = '"+ clave +"' where idEmpleado='"+cedula+"'");
 
     }catch(...){
-        throw "No se puedo modificar la clave del empleado";
+        throw std::string("No se puedo modificar la clave del empleado");
     }
 }
 
@@ -123,6 +118,6 @@ void EmpleadoDAO::modIsAdministrador(std::__cxx11::string cedula, bool clave)
         dataBase->statement->execute("UPDATE Empleado SET esAdministrador = '"+ esAdministrador +"' where idEmpleado='"+cedula+"'");
 
     }catch(...){
-        throw "No se puedo modificar la clave del empleado";
+        throw std::string("No se puedo modificar la clave del empleado");
     }
 }

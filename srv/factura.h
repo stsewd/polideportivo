@@ -28,9 +28,7 @@ public:
 
     Factura();
     Factura(Cliente cliente,std::vector<Detalle> descripcion);
-    ~Factura();
-
-
+    ~Factura(){};
 };
 
 #endif // FACTURA_H

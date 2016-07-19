@@ -94,7 +94,7 @@ Espacio *ReservaSrv::getEspacio(std::string nombreEspacio)
             EspacioDeportivo e = espacioDeportivoDAO.get(nombreEspacio);
             espacio = new EspacioDeportivo(e.nombre, e.descripcion, e.precioPorhora, e.capacidad, e.estado, e.horario, e.tipo);
         } catch (...) {
-            throw "Espacio no encontrado.";
+            throw std::string("Espacio no encontrado.");
         }
     }
     return espacio;

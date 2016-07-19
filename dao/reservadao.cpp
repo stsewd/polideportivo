@@ -15,7 +15,7 @@ Reserva reservadao::add(Reserva reserva)
                                      reserva.espacio->nombre + "', ' " + getFecha(&(reserva.fechaReservacion)) +"', '"+
                                      getFecha(&(reserva.fechaReserva))+ "', ' " + getFecha(&(reserva.fechaFinReservacion))+")");
     }catch(...){
-        throw "No se puede agregar la reserva";
+        throw std::string("No se puede agregar la reserva");
     }
 }
 
@@ -31,7 +31,7 @@ void reservadao::del(std::string cedula, std::string nombreEspacio, time_t fecha
                                      nombreEspacio + "' and fechaReservacion='" + getFecha(&(fechaReservacion)) +
                                      "' and fechafinReservacion='"+getFecha(&(fechafinReservacion))+"')");
     }catch(...){
-        throw  "No se pudo eliminar";
+        throw  std::string("No se pudo eliminar");
     }
 }
 
@@ -58,7 +58,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -69,7 +69,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 }
@@ -94,7 +94,7 @@ std::vector<Reserva> reservadao::get(time_t fecha)
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -105,7 +105,7 @@ std::vector<Reserva> reservadao::get(time_t fecha)
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 }
@@ -130,7 +130,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -141,7 +141,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 }
@@ -165,7 +165,7 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -177,7 +177,7 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 }
@@ -201,7 +201,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -212,7 +212,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 }
@@ -235,7 +235,7 @@ std::vector<Reserva> reservadao::get()
                     EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
-                    throw "No existe el espacio";
+                    throw std::string("No existe el espacio");
                 }
             }
             reserva.cliente = &cliente;
@@ -246,7 +246,7 @@ std::vector<Reserva> reservadao::get()
             reservas.push_back(reserva);
         }
     }catch(...){
-        throw "No se encuentra";
+        throw std::string("No se encuentra");
     }
     return reservas;
 
