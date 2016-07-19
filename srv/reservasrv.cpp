@@ -40,7 +40,12 @@ Reserva ReservaSrv::mod(std::string cedulaCliente, std::string nombreEspacio, ti
     return reserva;
 }
 
-std::vector<Reserva> ReservaSrv::get(std::__cxx11::string cedulaCliente)
+void ReservaSrv::del(std::string cedula, std::string nombreEspacio, time_t fechaReservacion, time_t fechaFinReservacion)
+{
+    dataBase.del(cedulaCliente, nombreEspacio, fechaReservacion, fechaFinReservacion);
+}
+
+std::vector<Reserva> ReservaSrv::get(std::string cedulaCliente)
 {
     return dataBase.get(cedulaCliente);
 }
@@ -50,7 +55,7 @@ std::vector<Reserva> ReservaSrv::get(time_t fecha)
     return get(fecha);
 }
 
-std::vector<Reserva> ReservaSrv::get(std::__cxx11::string cedulaCliente, time_t fecha)
+std::vector<Reserva> ReservaSrv::get(std::string cedulaCliente, time_t fecha)
 {
     return get(cedulaCliente, fecha);
 }
@@ -60,7 +65,7 @@ std::vector<Reserva> ReservaSrv::get(time_t fechaInicial, time_t fechaFinal)
     return get(fechaInicial, fechaFinal);
 }
 
-std::vector<Reserva> ReservaSrv::get(std::__cxx11::string cedulaCliente, time_t fechaInicial, time_t fechaFinal)
+std::vector<Reserva> ReservaSrv::get(std::string cedulaCliente, time_t fechaInicial, time_t fechaFinal)
 {
     return get(cedulaCliente, fechaInicial, fechaFinal);
 }
