@@ -4,7 +4,7 @@ reservadao::reservadao()
 {
     dataBase = new ConexionDB("localhost:3306","root","1234","Polideportivo");
     espacioComplementariodao = new EspacioComplementarioDAO();
-    espacioDeportivodao = new EspacioComplementarioDAO();
+    espacioDeportivodao = new EspacioDeportivoDAO();
     clientedao = new ClienteDAO();
 }
 
