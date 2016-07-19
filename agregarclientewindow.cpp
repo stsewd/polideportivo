@@ -12,3 +12,20 @@ AgregarClientewindow::~AgregarClientewindow()
 {
     delete ui;
 }
+
+void AgregarClientewindow::on_btnGuardar_clicked()
+{
+    try {
+        // TODO
+    } catch (std::string e) {
+        QString msg = QString::fromStdString(e);
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    } catch (...) {
+        QString msg = QString::fromStdString("Algo inesperado ocurrió.");
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    }
+}

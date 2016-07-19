@@ -15,6 +15,9 @@ public:
     explicit AgregarSocioWindow(QWidget *parent = 0);
     ~AgregarSocioWindow();
 
+private slots:
+    void on_btnGuardar_clicked();
+
 private:
     Ui::AgregarSocioWindow *ui;
 };
