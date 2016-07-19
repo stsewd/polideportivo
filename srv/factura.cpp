@@ -5,14 +5,17 @@ Factura::Factura()
 
 }
 
-
-Factura::Factura(Cliente cliente, std::vector<Detalle> descripcion)
+Factura::Factura(Cliente cliente, Espacio& espacio, int horas, double abono)
 {
     this->cliente=cliente;
-    this->descripcion=descripcion;
+    this->espacio=espacio;
     this->fechaEmision=time(NULL);
-    this->abono=0;
-    this->subTotal=0;
-    this->total=0;
+    this->horas=horas;
+    this->abono=abono;
+    this->subTotal=this->subTotal-abono;
+    this->total=espacio.precioPorhora*horas;
 
 }
+
+
+

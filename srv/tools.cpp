@@ -112,3 +112,23 @@ Estado getEstado(std::string estadoEspacio)
     else
         throw "Estado no válido";
 }
+
+Espacio *getEspacio(std::string nombreEspacio)
+{
+    Espacio* espacio;
+    EspacioComplementarioDAO espacioComplementarioDAO;
+    EspacioDeportivoDAO espacioDeportivoDAO;
+
+    try {
+        EspacioComplementario e = espacioComplementarioDAO.get(nombreEspacio);
+        espacio = new EspacioComplementario(e.nombre, e.descripcion, e.precioPorhora, e.capacidad, e.estado, e.horario, e.tipo);
+    } catch (...) {
+        try {
+            EspacioDeportivo e = espacioDeportivoDAO.get(nombreEspacio);
+            espacio = new EspacioDeportivo(e.nombre, e.descripcion, e.precioPorhora, e.capacidad, e.estado, e.horario, e.tipo);
+        } catch (...) {
+            throw std::string("Espacio no encontrado.");
+        }
+    }
+    return espacio;
+}

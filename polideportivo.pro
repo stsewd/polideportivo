@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     agregarespaciowindow.cpp \
     agregarclientewindow.cpp \
     agregarempleadowindow.cpp \
-    agregarsociowindow.cpp
+    agregarsociowindow.cpp \
+    srv/facturasrv.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -76,7 +77,8 @@ HEADERS  += mainwindow.h \
     agregarespaciowindow.h \
     agregarclientewindow.h \
     agregarempleadowindow.h \
-    agregarsociowindow.h
+    agregarsociowindow.h \
+    srv/facturasrv.h
 
 
 

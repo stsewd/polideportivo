@@ -5,7 +5,7 @@
 #include <vector>
 #include <ctime>
 #include "cliente.h"
-
+#include "espacio.h"
 class Detalle
 {
 public:
@@ -21,13 +21,15 @@ public:
     int numFactura;
     Cliente cliente;
     time_t fechaEmision;
-    std::vector<Detalle> descripcion;
+    Espacio espacio;
+    //std::vector<Detalle> descripcion;
     double subTotal;
     double abono;
     double total;
+    int horas;
 
     Factura();
-    Factura(Cliente cliente,std::vector<Detalle> descripcion);
+    Factura(Cliente cliente, Espacio &espacio, int horas, double abono);
     ~Factura(){};
 };
 
