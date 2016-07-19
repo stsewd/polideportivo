@@ -5,6 +5,11 @@ facturadao::facturadao()
     dataBase = new ConexionDB("localhost:3306","root","1234","Polideportivo");
 }
 
+facturadao::~facturadao()
+{
+
+}
+
 Factura facturadao::add(Factura factura)
 {
     try{
@@ -47,7 +52,7 @@ Factura facturadao::get(int numFactura, std::string cedula)
         Cliente cliente = clientedao.get(cedula);
         factura.cliente = cliente;
 
-        dataBase->resultset = dataBase->statement->executeUpdate("SELECT * FROM Factura where idCliente='"+cedula+"'");
+        dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Factura where idCliente='"+cedula+"'");
         factura.fechaEmision = getFechaString(dataBase->resultset->getString(2));
         factura.abono = std::atof(dataBase->resultset->getString(3).c_str());
         factura.total = std::atof(dataBase->resultset->getString(4).c_str());
@@ -58,45 +63,6 @@ Factura facturadao::get(int numFactura, std::string cedula)
     }
     return factura;
 
-}
-
-std::vector<Factura> facturadao::get(std::__cxx11::string cedula)
-{
-
-}
-
-std::vector<Factura> facturadao::get()
-{
-    Factura factura;
-    std::vector<Factura> facturas;
-    std::vector<Detalle> productos;
-    Detalle detalle;
-    try{
-        dataBase1->resultset = dataBase1->statement->executeUpdate("SELECT * FROM Factura");
-        while(dataBase1->resultset->next()){
-            dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Detalle where idFactura='" + dataBase->resultset->getString(0) + "'");
-            while(dataBase->resultset->next()){
-                detalle.numDetalle = dataBase->resultset->getString(0);
-                detalle.descripcion = dataBase->resultset->getString(2);
-                detalle.cantidad = std::atoi(dataBase->resultset->getString(3).c_str());
-                detalle.precio = std::atof(dataBase->resultset->getString(4).c_str());
-                productos.push_back(detalle);
-            }
-            Cliente cliente = clientedao.get(cedula);
-            factura.cliente = &cliente;
-
-            dataBase->resultset = dataBase->statement->executeUpdate("SELECT * FROM Factura where idCliente='"+cedula+"'");
-            factura.fechaEmision = getFecha(dataBase->resultset->getString(2));
-            factura.abono = std::atof(dataBase->resultset->getString(3).c_str());
-            factura.total = std::atof(dataBase->resultset->getString(4));
-            factura.subTotal = factura.total - factura.abono;
-            factura.descripcion = productos;
-            facturas.push_back(factura);
-        }
-    }catch(...){
-        throw "Error al ingresar la factura";
-    }
-    return factura;
 }
 
 Factura facturadao::agregarAbono(int numFactura, std::string cedula, double abono)
@@ -111,6 +77,71 @@ Factura facturadao::agregarAbono(int numFactura, std::string cedula, double abon
     }
     return factura;
 }
+
+std::vector<Factura> facturadao::get(std::string cedula)
+{
+    Factura factura;
+    std::vector<Factura> facturas;
+    std::vector<Detalle> productos;
+    Detalle detalle;
+    try{
+        dataBase1->resultset = dataBase1->statement->executeQuery("SELECT * FROM Factura where='"+cedula+"'");
+        while(dataBase1->resultset->next()){
+            dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Detalle where idFactura='" + dataBase->resultset->getString(0) + "'");
+            while(dataBase->resultset->next()){
+                detalle.numDetalle = std::stoi(dataBase->resultset->getString(0).c_str());
+                detalle.descripcion = dataBase->resultset->getString(2);
+                detalle.cantidad = std::atoi(dataBase->resultset->getString(3).c_str());
+                detalle.precio = std::atof(dataBase->resultset->getString(4).c_str());
+                productos.push_back(detalle);
+            }
+            Cliente cliente = clientedao.get(dataBase1->resultset->getString(0));
+            factura.cliente = cliente;
+            factura.fechaEmision = getFechaString(dataBase->resultset->getString(2));
+            factura.abono = std::atof(dataBase->resultset->getString(3).c_str());
+            factura.total = std::atof(dataBase->resultset->getString(4).c_str());
+            factura.subTotal = factura.total - factura.abono;
+            factura.descripcion = productos;
+            facturas.push_back(factura);
+        }
+    }catch(...){
+        throw "Error al ingresar la factura";
+    }
+    return facturas;
+}
+
+std::vector<Factura> facturadao::get()
+{
+    Factura factura;
+    std::vector<Factura> facturas;
+    std::vector<Detalle> productos;
+    Detalle detalle;
+    try{
+        dataBase1->resultset = dataBase1->statement->executeQuery("SELECT * FROM Factura");
+        while(dataBase1->resultset->next()){
+            dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Detalle where idFactura='" + dataBase->resultset->getString(0) + "'");
+            while(dataBase->resultset->next()){
+                detalle.numDetalle = std::stoi(dataBase->resultset->getString(0).c_str());
+                detalle.descripcion = dataBase->resultset->getString(2);
+                detalle.cantidad = std::atoi(dataBase->resultset->getString(3).c_str());
+                detalle.precio = std::atof(dataBase->resultset->getString(4).c_str());
+                productos.push_back(detalle);
+            }
+            Cliente cliente = clientedao.get(dataBase1->resultset->getString(0));
+            factura.cliente = cliente;
+            factura.fechaEmision = getFechaString(dataBase->resultset->getString(2));
+            factura.abono = std::atof(dataBase->resultset->getString(3).c_str());
+            factura.total = std::atof(dataBase->resultset->getString(4).c_str());
+            factura.subTotal = factura.total - factura.abono;
+            factura.descripcion = productos;
+            facturas.push_back(factura);
+        }
+    }catch(...){
+        throw "Error al ingresar la factura";
+    }
+    return facturas;
+}
+
 
 
 

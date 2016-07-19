@@ -14,13 +14,14 @@ class facturadao
 {
 public:
     facturadao();
+    ~facturadao();
     ConexionDB *dataBase;
     ConexionDB *dataBase1;
     ClienteDAO  clientedao;
     Factura add(Factura factura);
     void del(int numFactura, std::string cedula);
     Factura get(int numFactura, std::string cedula);
-    Factura agregarAbono(std::string cedula, time_t fechaEmision, double abono);
+    Factura agregarAbono(int numFactura, std::string cedula, double abono);
     std::vector<Factura> get(std::string cedula);
     std::vector<Factura> get();
 
