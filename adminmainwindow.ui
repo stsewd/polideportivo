@@ -93,7 +93,11 @@
            </spacer>
           </item>
           <item row="2" column="0" colspan="3">
-           <widget class="QTableWidget" name="espaciosTable"/>
+           <widget class="QTableWidget" name="espaciosTable">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -105,7 +109,11 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableWidget" name="empleadosTable"/>
+         <widget class="QTableWidget" name="empleadosTable">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
