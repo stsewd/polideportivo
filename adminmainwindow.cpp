@@ -40,6 +40,7 @@ void AdminMainWindow::on_actionSalir_triggered()
 
 void AdminMainWindow::cargarTablaEspacios()
 {
+    ui->espaciosTable->clear();
     QStringList headers;
     headers << "Nombre" << "Capacidad" << "Tipo" << "Estado";
     ui->espaciosTable->setColumnCount(4);
@@ -56,6 +57,8 @@ void AdminMainWindow::cargarTablaEspacios()
 
 void AdminMainWindow::cargarTablaEmpleados()
 {
+    ui->empleadosTable->clear();
+    ui->empleadosTable->clear();
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido" << "Administrador";
     ui->empleadosTable->setColumnCount(4);
@@ -123,6 +126,7 @@ void AdminMainWindow::cargarSocios()
 
 void AdminMainWindow::cargarTablaSocios()
 {
+    ui->sociosTable->clear();
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido" << "Fecha de afilacion";
     ui->sociosTable->setColumnCount(4);
@@ -146,6 +150,7 @@ void AdminMainWindow::cargarClientes()
 
 void AdminMainWindow::cargarTablaClientes()
 {
+    ui->clientesTable->clear();
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido";
     ui->clientesTable->setColumnCount(3);
@@ -174,4 +179,49 @@ void AdminMainWindow::on_agregarSocioBtn_clicked()
 {
     AgregarSocioWindow* window = new AgregarSocioWindow();
     window->show();
+}
+
+void AdminMainWindow::on_eliminarEspacioBtn_clicked()
+{
+    int index = ui->espaciosTable->selectionModel()->currentIndex().row();
+
+    std::string tipoEspacio = ui->espaciosComboBox->currentText().toUtf8().constData();
+
+    EspacioComplementarioSrv ecs;
+    EspacioDeportivoSrv eds;
+    std::string nombre = ui->espaciosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+
+    if (tipoEspacio == "Espacios deportivos") {
+        eds.del(nombre);
+    } else if (tipoEspacio == "Espacios complementarios") {
+        ecs.del(nombre);
+    }
+    cargarTablaEspacios();
+}
+
+void AdminMainWindow::on_eliminarEmpleadoBtn_clicked()
+{
+    int index = ui->empleadosTable->selectionModel()->currentIndex().row();
+    EmpleadoSrv es;
+    std::string cedula = ui->empleadosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+    es.del(cedula);
+    cargarTablaEmpleados();
+}
+
+void AdminMainWindow::on_eliminarClienteBtn_clicked()
+{
+    int index = ui->clientesTable->selectionModel()->currentIndex().row();
+    ClienteSrv cs;
+    std::string cedula = ui->clientesTable->model()->index(index, 0).data().toString().toUtf8().constData();
+    cs.del(cedula);
+    cargarTablaClientes();
+}
+
+void AdminMainWindow::on_eliminarSocioBtn_clicked()
+{
+    int index = ui->sociosTable->selectionModel()->currentIndex().row();
+    SocioSrv ss;
+    std::string cedula = ui->sociosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+    ss.del(cedula);
+    cargarTablaSocios();
 }

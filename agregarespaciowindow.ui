@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>422</width>
-    <height>365</height>
+    <height>393</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
      <x>10</x>
      <y>40</y>
      <width>401</width>
-     <height>313</height>
+     <height>344</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -49,12 +49,12 @@
        <widget class="QComboBox" name="cmbTipoEspacio">
         <item>
          <property name="text">
-          <string>Deportivos</string>
+          <string>Deportivo</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Complementarios</string>
+          <string>Complementario</string>
          </property>
         </item>
        </widget>

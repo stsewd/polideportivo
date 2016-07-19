@@ -20,7 +20,7 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QComboBox" name="tipoEspacioComboBox">
+         <widget class="QComboBox" name="espaciosComboBox">
           <item>
            <property name="text">
             <string>Espacio deportivo</string>
@@ -79,9 +79,6 @@
     </item>
    </layout>
    <zorder></zorder>
-   <zorder>espaciosTable</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>horizontalSpacer_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

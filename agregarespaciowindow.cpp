@@ -15,12 +15,17 @@ AgregarEspacioWindow::~AgregarEspacioWindow()
 
 void AgregarEspacioWindow::on_cmbTipoEspacio_currentIndexChanged(int index)
 {
-    QStringList listaEspaciosDeportivos=(QStringList()<<"Cancha de Tenis"<<"Cancha de Futbol"<<"Cancha Sintética"<<"Cancha de Voley"<<"Estadio"<<"Piscina");
-    QStringList listaEspaciosComplementarios=(QStringList()<<"Bar"<<"Sala de Conferencias"<<"Sala de Prensa"<<""<<"Tienda Deportiva");
-    if(ui->cmbTipoEspacio->currentText().toUtf8().constData() == "Deportivo"){
+    QStringList listaEspaciosDeportivos=(QStringList()<<"Cancha de Tenis"<<"Cancha de Futbol"<<"Cancha Sintetica"<<"Cancha de Voley"<<"Estadio"<<"Piscina");
+    QStringList listaEspaciosComplementarios=(QStringList()<<"Bar"<<"Sala de Conferencias"<<"Sala de Prensa" << "Tienda Deportiva");
+    std::string tipo = ui->cmbTipoEspacio->currentText().toUtf8().constData();
+    ui->cmbTipo->clear();
+    if(tipo == "Deportivo"){
         ui->cmbTipo->addItems(listaEspaciosDeportivos);
-    }else if(ui->cmbTipoEspacio->currentText().toUtf8().constData() == "Deportivo"){
+    }else if(tipo == "Complementario"){
         ui->cmbTipo->addItems(listaEspaciosComplementarios);
     }
+}
 
+void AgregarEspacioWindow::on_cmbTipoEspacio_activated(int index)
+{
 }
