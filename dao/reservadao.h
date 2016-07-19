@@ -19,6 +19,9 @@ class reservadao
 public:
     reservadao();
     ConexionDB *dataBase;
+    ClienteDAO *clientedao;
+    EspacioComplementarioDAO *espacioComplementariodao;
+    EspacioDeportivoDAO *espacioDeportivodao;
     Reserva add(Reserva reserva);
     Reserva mod(Reserva reserva);
     void del(std::string cedula, std::string nombreEspacio, time_t fechaReservacion);
