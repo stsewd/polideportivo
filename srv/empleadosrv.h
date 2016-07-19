@@ -13,6 +13,9 @@ public:
 
     EmpleadoSrv();
 
+    bool identificarUsuarioAdministrador(std::string usuario, std::string pass);
+    bool identificarUsuario(std::string usuario, std::string pass);
+
     Empleado add(std::string cedula, std::string nombre, std::string apellido, std::string direccion,
                  std::string telefono, std::string clave, bool esAdministrador
     );
