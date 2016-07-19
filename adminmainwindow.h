@@ -26,6 +26,8 @@ private slots:
 
     void on_espaciosComboBox_currentIndexChanged(int index);
 
+    void on_agregarEspacioBtn_clicked();
+
 private:
     Ui::AdminMainWindow *ui;
 public:

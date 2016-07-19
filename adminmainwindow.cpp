@@ -5,6 +5,7 @@
 #include "srv/espaciodeportivosrv.h"
 #include "srv/empleadosrv.h"
 #include "srv/tools.h"
+#include "agregarespaciowindow.h"
 
 AdminMainWindow::AdminMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -102,4 +103,10 @@ void AdminMainWindow::cargarEmpleados()
 void AdminMainWindow::on_espaciosComboBox_currentIndexChanged(int index)
 {
     cargarTablaEspacios();
+}
+
+void AdminMainWindow::on_agregarEspacioBtn_clicked()
+{
+    AgregarEspacioWindow* window = new AgregarEspacioWindow();
+    window->show();
 }
