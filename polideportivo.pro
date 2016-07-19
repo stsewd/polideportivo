@@ -19,7 +19,6 @@ SOURCES += main.cpp\
     srv/espaciocomplementario.cpp \
     srv/espaciodeportivo.cpp \
     srv/persona.cpp \
-    srv/reserva.cpp \
     srv/socio.cpp \
     dao/espaciodeportivodao.cpp \
     dao/espaciocomplementariodao.cpp \
@@ -38,6 +37,10 @@ SOURCES += main.cpp\
     srv/sociosrv.cpp \
     srv/reservasrv.cpp \
     dao/reservadao.cpp
+    dao/reserva.cpp \
+    dao/reservadao.cpp
+    srv/reservasrv.cpp
+
 
 HEADERS  += mainwindow.h \
     srv/cliente.h \
@@ -64,6 +67,9 @@ HEADERS  += mainwindow.h \
     srv/sociosrv.h \
     srv/reservasrv.h \
     dao/reservadao.h
+    dao/reservadao.h
+    srv/reservasrv.h
+
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
