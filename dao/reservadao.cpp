@@ -6,9 +6,6 @@ reservadao::reservadao()
     //espacioComplementariodao = new EspacioComplementarioDAO();
     //espacioDeportivodao = new EspacioComplementarioDAO();
     //clientedao = new ClienteDAO();
-    espacioComplementariodao = new EspacioComplementarioDAO();
-    espacioDeportivodao = new EspacioDeportivoDAO();
-    clientedao = new ClienteDAO();
 }
 
 Reserva reservadao::add(Reserva reserva)
