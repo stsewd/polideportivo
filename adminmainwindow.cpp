@@ -41,6 +41,7 @@ void AdminMainWindow::on_actionSalir_triggered()
 void AdminMainWindow::cargarTablaEspacios()
 {
     ui->espaciosTable->clear();
+    ui->espaciosTable->setRowCount(0);
     QStringList headers;
     headers << "Nombre" << "Capacidad" << "Tipo" << "Estado";
     ui->espaciosTable->setColumnCount(4);
@@ -58,7 +59,7 @@ void AdminMainWindow::cargarTablaEspacios()
 void AdminMainWindow::cargarTablaEmpleados()
 {
     ui->empleadosTable->clear();
-    ui->empleadosTable->clear();
+    ui->empleadosTable->setRowCount(0);
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido" << "Administrador";
     ui->empleadosTable->setColumnCount(4);
@@ -127,6 +128,7 @@ void AdminMainWindow::cargarSocios()
 void AdminMainWindow::cargarTablaSocios()
 {
     ui->sociosTable->clear();
+    ui->sociosTable->setRowCount(0);
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido" << "Fecha de afilacion";
     ui->sociosTable->setColumnCount(4);
@@ -151,6 +153,7 @@ void AdminMainWindow::cargarClientes()
 void AdminMainWindow::cargarTablaClientes()
 {
     ui->clientesTable->clear();
+    ui->clientesTable->setRowCount(0);
     QStringList headers;
     headers << "Cédula" << "Nombre" << "Apellido";
     ui->clientesTable->setColumnCount(3);
@@ -166,12 +169,14 @@ void AdminMainWindow::on_espaciosComboBox_currentIndexChanged(int index)
 void AdminMainWindow::on_agregarEspacioBtn_clicked()
 {
     AgregarEspacioWindow* window = new AgregarEspacioWindow();
+    window->mainWindow = this;
     window->show();
 }
 
 void AdminMainWindow::on_agregarEmpleadoBtn_clicked()
 {
     AgregarEmpleadoWindow* window = new AgregarEmpleadoWindow();
+    window->mainWindow = this;
     window->show();
 }
 
