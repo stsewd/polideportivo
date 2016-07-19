@@ -1,4 +1,5 @@
 #include <regex>
+#include <ctime>
 
 #include "tools.h"
 
@@ -51,10 +52,10 @@ std::string getFecha(time_t *fecha)
     return buff;
 }
 
-time_t getFechaString(char* fecha)
+time_t getFechaString(std::string fecha)
 {
     struct tm tm;
-    strptime(fecha, "%Y-%m-%d %H:%M:%S", &tm);
+    strptime(fecha.c_str(), "%Y-%m-%d %H:%M:%S", &tm);
     time_t t = mktime(&tm);  // t is now your desired time_t
     return t;
 }
@@ -90,4 +91,10 @@ std::vector<std::string> split(std::string texto, char delim)
     }
     elementos.push_back(aux);
     return elementos;
+}
+
+void validarFechas(time_t fechaReservacion, time_t fechaFinReservacion)
+{
+    if (difftime(fechaReservacion, fechaFinReservacion) > 0)
+        throw "Fecha final mayor a la inicial";
 }
