@@ -12,9 +12,10 @@ public:
     Espacio* espacio;
     time_t fechaReservacion;
     time_t fechaReserva;
+    time_t fechaFinReservacion;
 public:
     Reserva();
-    Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReservacion);
+    Reserva(Cliente& cliente, Espacio& espacio, time_t fechaReservacion, time_t fechaFinReservacion);
     ~Reserva();
 };
 
