@@ -98,3 +98,17 @@ void validarFechas(time_t fechaReservacion, time_t fechaFinReservacion)
     if (difftime(fechaReservacion, fechaFinReservacion) > 0)
         throw "Fecha final mayor a la inicial";
 }
+
+Estado getEstado(std::string estadoEspacio)
+{
+    if (estadoEspacio == "libre")
+        return Estado::libre;
+    else if (estadoEspacio == "ocupado")
+        return Estado::ocupado;
+    else if (estadoEspacio == "reservado")
+        return Estado::reservado;
+    else if (estadoEspacio == "mantenimiento")
+        return Estado::mantenimiento;
+    else
+        throw "Estado no válido";
+}
