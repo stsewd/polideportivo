@@ -24,6 +24,8 @@ private slots:
 
     void on_cerrarSesionAction_triggered();
 
+    void on_reservarBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 public:

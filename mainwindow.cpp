@@ -71,3 +71,8 @@ void MainWindow::cargarEspaciosComplementarios()
     }
 }
 
+
+void MainWindow::on_reservarBtn_clicked()
+{
+
+}

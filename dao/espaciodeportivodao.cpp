@@ -11,7 +11,7 @@ EspacioDeportivoDAO::EspacioDeportivoDAO()
 EspacioDeportivo EspacioDeportivoDAO::add(EspacioDeportivo &espacio)
 {
     try{
-        dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio WHERE nombre = '" + espacio.nombre);
+        dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio WHERE nombre='" + espacio.nombre + "'");
         if(dataBase->resultset->rowsCount()==0){
             //std::string fechaIngreso = getFecha(espacio.horario.entrada);
             //std::string fechaSalida = getFecha(espacio.horario.salida);
@@ -22,8 +22,8 @@ EspacioDeportivo EspacioDeportivoDAO::add(EspacioDeportivo &espacio)
                                          "', '" + espacio.horario.entrada.getHora() + "', '" + espacio.horario.salida.getHora() + "')"
             );
         }
-        dataBase->statement->execute("INSERT INTO EspacioDeportivo values('" + espacio.nombre + "', " + espacio.tipo.nombre + "')");
-    }catch(...){
+        dataBase->statement->execute("INSERT INTO EspacioDeportivo values('" + espacio.nombre + "', '" + espacio.tipo.nombre + "')");
+    } catch(...) {
         throw std::string("No se puede ingresar el Espacio Deportivo");
     }
     return espacio;
