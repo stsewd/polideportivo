@@ -1,6 +1,7 @@
 #include "agregarempleadowindow.h"
 #include "ui_agregarempleadowindow.h"
 #include "srv/empleadosrv.h"
+#include <QMessageBox>
 
 AgregarEmpleadoWindow::AgregarEmpleadoWindow(QWidget *parent) :
     QDialog(parent),

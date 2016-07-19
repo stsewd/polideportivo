@@ -1,5 +1,6 @@
 #include "agregarclientewindow.h"
 #include "ui_agregarclientewindow.h"
+#include <QMessageBox>
 
 AgregarClientewindow::AgregarClientewindow(QWidget *parent) :
     QDialog(parent),

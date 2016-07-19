@@ -10,6 +10,7 @@
 #include "agregarespaciowindow.h"
 #include "agregarempleadowindow.h"
 #include "agregarsociowindow.h"
+#include <QMessageBox>
 
 AdminMainWindow::AdminMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -183,6 +184,7 @@ void AdminMainWindow::on_agregarEmpleadoBtn_clicked()
 void AdminMainWindow::on_agregarSocioBtn_clicked()
 {
     AgregarSocioWindow* window = new AgregarSocioWindow();
+    window->mainWindow = this;
     window->show();
 }
 
