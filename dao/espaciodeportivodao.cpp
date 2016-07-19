@@ -58,7 +58,7 @@ void EspacioDeportivoDAO::del(std::__cxx11::string nombre)
 
 EspacioDeportivo EspacioDeportivoDAO::get(std::string nombre)
 {
-    EspacioDeportivo espacio = NULL;
+    EspacioDeportivo espacio;
     try{
     dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioDeportivo D WHERE D.idEspacioDeportivo ='" +nombre +
                                                           "' AND E.nombre = D.idEspacioDeportivo");
