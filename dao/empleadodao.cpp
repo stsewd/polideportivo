@@ -77,18 +77,13 @@ std::vector<Empleado> EmpleadoDAO::get()
     try{
         dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Empleado C where P.cedula = C.idEmpleado ");
         while(dataBase->resultset->next()){
-            empleado.cedula = dataBase->resultset->getString(0);
-            empleado.nombre = dataBase->resultset->getString(1);
-            empleado.apellido= dataBase->resultset->getString(2);
-            empleado.direccion= dataBase->resultset->getString(3);
-            empleado.telefono= dataBase->resultset->getString(4);
-            empleado.clave = dataBase->resultset->getString(6);
-            if(dataBase->resultset->getString(7)=="0"){
-                esAdministrador=false;
-            }else{
-                esAdministrador=true;
-            }
-            empleado.esAdministrador = esAdministrador;
+            empleado.cedula = dataBase->resultset->getString(1);
+            empleado.nombre = dataBase->resultset->getString(2);
+            empleado.apellido= dataBase->resultset->getString(3);
+            empleado.direccion= dataBase->resultset->getString(4);
+            empleado.telefono= dataBase->resultset->getString(5);
+            empleado.clave = dataBase->resultset->getString(7);
+            empleado.esAdministrador = dataBase->resultset->getString(8) == "1";
             empleados.push_back(empleado);
         }
     }catch(...){
@@ -99,7 +94,7 @@ std::vector<Empleado> EmpleadoDAO::get()
 
 }
 
-void EmpleadoDAO::modClave(std::__cxx11::string cedula, std::__cxx11::string clave)
+void EmpleadoDAO::modClave(std::string cedula, std::string clave)
 {
     try{
         dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where cedula = '"+cedula+"'");

@@ -43,7 +43,7 @@ EspacioComplementario EspacioComplementarioDAO::mod(EspacioComplementario espaci
     return espacio;
 }
 
-void EspacioComplementarioDAO::del(std::__cxx11::string nombre)
+void EspacioComplementarioDAO::del(std::string nombre)
 {
     try{
         dataBase->statement->execute("DELETE FROM EspacioComplementario WHERE idEspacioComplementario='"+nombre+"'");
@@ -59,14 +59,14 @@ EspacioComplementario EspacioComplementarioDAO::get(std::string nombre)
     dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioComplementario D WHERE D.idEspacioComplementario='" +nombre +
                                                           "' AND E.nombre = D.idEspacioComplementario");
     while(dataBase->resultset->next()){
-        espacio.nombre = dataBase->resultset->getString(0);
-        espacio.descripcion = dataBase->resultset->getString(1);
-        double num = atof( dataBase->resultset->getString(2).c_str() );
+        espacio.nombre = dataBase->resultset->getString(1);
+        espacio.descripcion = dataBase->resultset->getString(2);
+        double num = atof( dataBase->resultset->getString(3).c_str() );
         espacio.precioPorhora = num;
-        espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = getEstado(dataBase->resultset->getString(4));
-        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
-        espacio.tipo.nombre=dataBase->resultset->getString(8);
+        espacio.capacidad = std::stoi(dataBase->resultset->getString(4).c_str());
+        espacio.estado = getEstado(dataBase->resultset->getString(5));
+        espacio.horario = getHorario(dataBase->resultset->getString(6), dataBase->resultset->getString(7));
+        espacio.tipo.nombre=dataBase->resultset->getString(9);
     }
     }catch(...){
         throw std::string("No  se puede obtener espacio complementario");
@@ -81,14 +81,14 @@ std::vector<EspacioComplementario> EspacioComplementarioDAO::get()
     try{
     dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Espacio E, EspacioComplementario D WHERE E.nombre = D.idEspacioComplementario");
     while(dataBase->resultset->next()){
-        espacio.nombre = dataBase->resultset->getString(0);
-        espacio.descripcion = dataBase->resultset->getString(1);
-        double num = atof( dataBase->resultset->getString(2).c_str() );
+        espacio.nombre = dataBase->resultset->getString(1);
+        espacio.descripcion = dataBase->resultset->getString(2);
+        double num = atof( dataBase->resultset->getString(3).c_str() );
         espacio.precioPorhora = num;
-        espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = getEstado(dataBase->resultset->getString(4));
-        espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
-        espacio.tipo.nombre = dataBase->resultset->getString(8);
+        espacio.capacidad = std::stoi(dataBase->resultset->getString(4).c_str());
+        espacio.estado = getEstado(dataBase->resultset->getString(5));
+        espacio.horario = getHorario(dataBase->resultset->getString(6), dataBase->resultset->getString(7));
+        espacio.tipo.nombre = dataBase->resultset->getString(9);
         espacios.push_back(espacio);
     }
     }catch(...){
@@ -97,7 +97,7 @@ std::vector<EspacioComplementario> EspacioComplementarioDAO::get()
     return espacios;
 }
 
-void EspacioComplementarioDAO::modTipo(std::__cxx11::string nombre, std::__cxx11::string tipo)
+void EspacioComplementarioDAO::modTipo(std::string nombre, std::string tipo)
 {
     try{
         dataBase->statement->execute("UPDATE FROM EspacioComplementario SET tipoEspacioComplementario='" + tipo +

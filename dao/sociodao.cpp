@@ -34,7 +34,7 @@ Socio socioDAO::mod(Socio &socio)
     return socio;
 }
 
-void socioDAO::del(std::__cxx11::string cedula)
+void socioDAO::del(std::string cedula)
 {
     try{
         dataBase->statement->execute("DELETE FROM socio where idSocio='"+cedula+"'");
@@ -48,22 +48,17 @@ Socio socioDAO::get(std::string cedula)
     Socio socio;
     bool esActivo;
     try{
-        dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Socio C where P.cedula = C.idSocio");
+        dataBase->resultset = dataBase->statement->executeQuery("select * from Persona P, Socio C where C.idSocio='"+cedula+" and P.cedula = C.idSocio");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Socio where idSocio='"+cedula+"'");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idSocio='"+cedula+"'");
         while(dataBase->resultset->next()){
-            socio.cedula = dataBase->resultset->getString(0);
-            socio.nombre = dataBase->resultset->getString(1);
-            socio.apellido= dataBase->resultset->getString(2);
-            socio.direccion= dataBase->resultset->getString(3);
-            socio.telefono= dataBase->resultset->getString(4);
-            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(6));
-            if(dataBase->resultset->getString(7)=="0"){
-                esActivo=false;
-            }else{
-                esActivo=true;
-            }
-            socio.estaActivo = esActivo;
+            socio.cedula = dataBase->resultset->getString(1);
+            socio.nombre = dataBase->resultset->getString(2);
+            socio.apellido= dataBase->resultset->getString(3);
+            socio.direccion= dataBase->resultset->getString(4);
+            socio.telefono= dataBase->resultset->getString(5);
+            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(7));
+            socio.estaActivo = dataBase->resultset->getString(8) == "1";
 
         }
     }catch(...){
@@ -83,19 +78,14 @@ std::vector<Socio> socioDAO::get()
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Socio where idSocio='"+cedula+"'");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idSocio='"+cedula+"'");
         while(dataBase->resultset->next()){
-            socio.cedula = dataBase->resultset->getString(0);
-            socio.nombre = dataBase->resultset->getString(1);
-            socio.apellido= dataBase->resultset->getString(2);
-            socio.direccion= dataBase->resultset->getString(3);
-            socio.telefono= dataBase->resultset->getString(4);
-            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(6));
-            if(dataBase->resultset->getString(7)=="0"){
-                esActivo=false;
-            }else{
-                esActivo=true;
-            }
-            socio.estaActivo = esActivo;
-            socios.push_back(socio);
+            socio.cedula = dataBase->resultset->getString(1);
+            socio.nombre = dataBase->resultset->getString(2);
+            socio.apellido= dataBase->resultset->getString(3);
+            socio.direccion= dataBase->resultset->getString(4);
+            socio.telefono= dataBase->resultset->getString(5);
+            socio.fechaIngreso = getFechaString(dataBase->resultset->getString(7));
+            socio.estaActivo = dataBase->resultset->getString(8) == "1";
+
         }
     }catch(...){
         throw std::string("No se puede extraer el socio");
@@ -105,7 +95,7 @@ std::vector<Socio> socioDAO::get()
 
 }
 
-void socioDAO::modEsActivo(std::__cxx11::string cedula, bool estado)
+void socioDAO::modEsActivo(std::string cedula, bool estado)
 {
     try{
         std::string esActivo = estado ? "1" : "0";

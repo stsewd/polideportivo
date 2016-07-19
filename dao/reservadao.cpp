@@ -49,13 +49,13 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
         ClienteDAO clienteDAO;
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Polideportivo.Reserva where idCliente='" + cedulaCliente+ "'");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0));
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1));
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -63,9 +63,9 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
-            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
+            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
         }
     }catch(...){
@@ -85,13 +85,13 @@ std::vector<Reserva> reservadao::get(time_t fecha)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fecha) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&aux)+"')");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1)); //cliente puede salir de aca y ponerse una linea mas arriba
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -99,9 +99,9 @@ std::vector<Reserva> reservadao::get(time_t fecha)
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
-            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
+            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
         }
     }catch(...){
@@ -121,13 +121,13 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fecha) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&aux)+"') and idCliente='"+cedulaCliente+"'");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1)); //cliente puede salir de aca y ponerse una linea mas arriba
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -135,9 +135,9 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
-            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
+            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
         }
     }catch(...){
@@ -156,13 +156,13 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fechaInicial) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&fechaFinal)+"')");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1)); //cliente puede salir de aca y ponerse una linea mas arriba
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -170,9 +170,9 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
             reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
             reservas.push_back(reserva);
         }
@@ -192,13 +192,13 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fechaInicial) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&fechaFinal)+"') and idCliente='"+cedulaCliente+"'");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1)); //cliente puede salir de aca y ponerse una linea mas arriba
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -206,9 +206,9 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
-            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
+            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
         }
     }catch(...){
@@ -226,13 +226,13 @@ std::vector<Reserva> reservadao::get()
     try{
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva ");
         while(dataBase->resultset->next()){
-            Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Cliente cliente = clientedao.get(dataBase->resultset->getString(1)); //cliente puede salir de aca y ponerse una linea mas arriba
             try{
-            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
+            EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(2));
             espacio = static_cast<Espacio> (espacioDeportivo);
             }catch(...){
                 try{
-                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
+                    EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(2));
                     espacio = static_cast<Espacio> (espacioComplementario);
                 }catch(...){
                     throw std::string("No existe el espacio");
@@ -240,9 +240,9 @@ std::vector<Reserva> reservadao::get()
             }
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
-            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
-            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
-            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(3));
+            reserva.fechaReserva = getFechaString(dataBase->resultset->getString(4));
+            reserva.fechaFinReservacion = getFechaString(dataBase->resultset->getString(5));
             reservas.push_back(reserva);
         }
     }catch(...){

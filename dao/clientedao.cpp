@@ -50,11 +50,11 @@ Cliente ClienteDAO::get(std::string cedula)
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Cliente where idCliente='"+cedula+"'");
         //dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona where idCliente='"+cedula+"'");
         while(dataBase->resultset->next()){
-            cliente.cedula = dataBase->resultset->getString(0);
-            cliente.nombre = dataBase->resultset->getString(1);
-            cliente.apellido= dataBase->resultset->getString(2);
-            cliente.direccion= dataBase->resultset->getString(3);
-            cliente.telefono= dataBase->resultset->getString(4);
+            cliente.cedula = dataBase->resultset->getString(1);
+            cliente.nombre = dataBase->resultset->getString(2);
+            cliente.apellido= dataBase->resultset->getString(3);
+            cliente.direccion= dataBase->resultset->getString(4);
+            cliente.telefono= dataBase->resultset->getString(5);
         }
     }catch(...){
         throw std::string("No se puede extraer el cliente");
@@ -70,11 +70,11 @@ std::vector<Cliente> ClienteDAO::get()
     try{
         dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Persona P, Cliente C where P.cedula=C.idCliente");
         while(dataBase->resultset->next()){
-            cliente.cedula = dataBase->resultset->getString(0);
-            cliente.nombre = dataBase->resultset->getString(1);
-            cliente.apellido = dataBase->resultset->getString(2);
-            cliente.direccion = dataBase->resultset->getString(3);
-            cliente.telefono = dataBase->resultset->getString(4);
+            cliente.cedula = dataBase->resultset->getString(1);
+            cliente.nombre = dataBase->resultset->getString(2);
+            cliente.apellido = dataBase->resultset->getString(3);
+            cliente.direccion = dataBase->resultset->getString(4);
+            cliente.telefono = dataBase->resultset->getString(5);
             clientes.push_back(cliente);
         }
     }catch(...){
