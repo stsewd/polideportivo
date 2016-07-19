@@ -28,6 +28,10 @@ private slots:
 
     void on_agregarEspacioBtn_clicked();
 
+    void on_agregarEmpleadoBtn_clicked();
+
+    void on_agregarSocioBtn_clicked();
+
 private:
     Ui::AdminMainWindow *ui;
 public:
@@ -38,6 +42,10 @@ public:
     void cargarEspaciosDeportivos();
     void cargarEspaciosComplementarios();
     void cargarEmpleados();
+    void cargarSocios();
+    void cargarTablaSocios();
+    void cargarClientes();
+    void cargarTablaClientes();
 };
 
 #endif // ADMINMAINWINDOW_H
