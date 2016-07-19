@@ -10,6 +10,7 @@
 #include "agregarespaciowindow.h"
 #include "agregarempleadowindow.h"
 #include "agregarsociowindow.h"
+#include <QMessageBox>
 
 AdminMainWindow::AdminMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -183,50 +184,99 @@ void AdminMainWindow::on_agregarEmpleadoBtn_clicked()
 void AdminMainWindow::on_agregarSocioBtn_clicked()
 {
     AgregarSocioWindow* window = new AgregarSocioWindow();
+    window->mainWindow = this;
     window->show();
 }
 
 void AdminMainWindow::on_eliminarEspacioBtn_clicked()
 {
-    int index = ui->espaciosTable->selectionModel()->currentIndex().row();
+    try {
+        int index = ui->espaciosTable->selectionModel()->currentIndex().row();
 
-    std::string tipoEspacio = ui->espaciosComboBox->currentText().toUtf8().constData();
+        std::string tipoEspacio = ui->espaciosComboBox->currentText().toUtf8().constData();
 
-    EspacioComplementarioSrv ecs;
-    EspacioDeportivoSrv eds;
-    std::string nombre = ui->espaciosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+        EspacioComplementarioSrv ecs;
+        EspacioDeportivoSrv eds;
+        std::string nombre = ui->espaciosTable->model()->index(index, 0).data().toString().toUtf8().constData();
 
-    if (tipoEspacio == "Espacios deportivos") {
-        eds.del(nombre);
-    } else if (tipoEspacio == "Espacios complementarios") {
-        ecs.del(nombre);
+        if (tipoEspacio == "Espacios deportivos") {
+            eds.del(nombre);
+        } else if (tipoEspacio == "Espacios complementarios") {
+            ecs.del(nombre);
+        }
+        cargarTablaEspacios();
+    } catch (std::string e) {
+        QString msg = QString::fromStdString(e);
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    } catch (...) {
+        QString msg = QString::fromStdString("Algo inesperado ocurrió.");
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
     }
-    cargarTablaEspacios();
 }
 
 void AdminMainWindow::on_eliminarEmpleadoBtn_clicked()
 {
-    int index = ui->empleadosTable->selectionModel()->currentIndex().row();
-    EmpleadoSrv es;
-    std::string cedula = ui->empleadosTable->model()->index(index, 0).data().toString().toUtf8().constData();
-    es.del(cedula);
-    cargarTablaEmpleados();
+    try {
+        int index = ui->empleadosTable->selectionModel()->currentIndex().row();
+        EmpleadoSrv es;
+        std::string cedula = ui->empleadosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+        es.del(cedula);
+        cargarTablaEmpleados();
+    } catch (std::string e) {
+        QString msg = QString::fromStdString(e);
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    } catch (...) {
+        QString msg = QString::fromStdString("Algo inesperado ocurrió.");
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    }
 }
 
 void AdminMainWindow::on_eliminarClienteBtn_clicked()
 {
-    int index = ui->clientesTable->selectionModel()->currentIndex().row();
-    ClienteSrv cs;
-    std::string cedula = ui->clientesTable->model()->index(index, 0).data().toString().toUtf8().constData();
-    cs.del(cedula);
-    cargarTablaClientes();
+    try {
+        int index = ui->clientesTable->selectionModel()->currentIndex().row();
+        ClienteSrv cs;
+        std::string cedula = ui->clientesTable->model()->index(index, 0).data().toString().toUtf8().constData();
+        cs.del(cedula);
+        cargarTablaClientes();
+    } catch (std::string e) {
+        QString msg = QString::fromStdString(e);
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    } catch (...) {
+        QString msg = QString::fromStdString("Algo inesperado ocurrió.");
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    }
 }
 
 void AdminMainWindow::on_eliminarSocioBtn_clicked()
 {
-    int index = ui->sociosTable->selectionModel()->currentIndex().row();
-    SocioSrv ss;
-    std::string cedula = ui->sociosTable->model()->index(index, 0).data().toString().toUtf8().constData();
-    ss.del(cedula);
-    cargarTablaSocios();
+    try {
+        int index = ui->sociosTable->selectionModel()->currentIndex().row();
+        SocioSrv ss;
+        std::string cedula = ui->sociosTable->model()->index(index, 0).data().toString().toUtf8().constData();
+        ss.del(cedula);
+        cargarTablaSocios();
+    } catch (std::string e) {
+        QString msg = QString::fromStdString(e);
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    } catch (...) {
+        QString msg = QString::fromStdString("Algo inesperado ocurrió.");
+        QMessageBox msgBox;
+        msgBox.setText(msg);
+        msgBox.exec();
+    }
 }

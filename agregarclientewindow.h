@@ -15,6 +15,9 @@ public:
     explicit AgregarClientewindow(QWidget *parent = 0);
     ~AgregarClientewindow();
 
+private slots:
+    void on_btnGuardar_clicked();
+
 private:
     Ui::AgregarClientewindow *ui;
 };
