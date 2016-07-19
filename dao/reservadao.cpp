@@ -11,6 +11,14 @@ reservadao::reservadao()
 Reserva reservadao::add(Reserva reserva)
 {
     try{
+
+        dataBase->resultset = dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&(reserva.fechaReservacion)) +
+                                                                      "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&(reserva.fechaFinReservacion))+"')");
+
+
+        if(!dataBase->resultset->next()){
+            throw std::string("Ya existe una reservacion entre esas fechas, consultes en la tabla de reservas");
+        }
         dataBase->statement->execute("INSERT INTO Reserva values('" + reserva.cliente->cedula + "', '" +
                                      reserva.espacio->nombre + "', ' " + getFecha(&(reserva.fechaReservacion)) +"', '"+
                                      getFecha(&(reserva.fechaReserva))+ "', ' " + getFecha(&(reserva.fechaFinReservacion))+")");

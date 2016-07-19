@@ -15,6 +15,9 @@ public:
     explicit AgregarEspacioWindow(QWidget *parent = 0);
     ~AgregarEspacioWindow();
 
+private slots:
+    void on_cmbTipoEspacio_currentIndexChanged(int index);
+
 private:
     Ui::AgregarEspacioWindow *ui;
 };
