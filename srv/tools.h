@@ -20,4 +20,6 @@ std::string getFecha(time_t *fecha);
 time_t getFechaString(std::string fecha);
 Horario getHorario(std::string horaentrada, std::string horaSalida);
 std::vector<std::string> split(std::string texto, char delim);
+void validarFechas(time_t fechaReservacion, time_t fechaFinReservacion);
+
 #endif // TOOLS_H
