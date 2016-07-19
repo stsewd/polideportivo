@@ -12,7 +12,7 @@ EspacioDeportivo::EspacioDeportivo(
         Estado estado, Horario horario, TipoEspacioDeportivo tipoEspacio):
     Espacio(nombre, descripcion, precioPorHora, capacidad, estado, horario)
 {
-
+    this->tipo = tipoEspacio;
 }
 
 EspacioDeportivo::~EspacioDeportivo()

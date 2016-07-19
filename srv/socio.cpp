@@ -10,7 +10,7 @@ Socio::Socio(
         std::string telefono):
     Cliente(cedula, nombre, apellido, direccion,telefono)
 {
-
+    // ok, sin constructor
 }
 
 Socio::~Socio()

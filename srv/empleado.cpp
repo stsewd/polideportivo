@@ -10,7 +10,8 @@ Empleado::Empleado(
         std::string telefono, std::string clave, bool esAdministrador):
     Persona(cedula, nombre, apellido, direccion,telefono)
 {
-
+    this->clave = clave;
+    this->esAdministrador = esAdministrador;
 }
 
 Empleado::~Empleado()
