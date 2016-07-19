@@ -7,17 +7,22 @@
 
 #include "../srv/factura.h"
 #include "conexiondb.h"
+#include "../srv/tools.h"
+#include "clientedao.h"
 
 class facturadao
 {
 public:
     facturadao();
     ConexionDB *dataBase;
+    ConexionDB *dataBase1;
+    ClienteDAO  clientedao;
     Factura add(Factura factura);
-    void del(std::string cedula, time_t fechaEmision);
-    Factura get(std::string cedula, time_t fechaEmision);
+    void del(int numFactura, std::string cedula);
+    Factura get(int numFactura, std::string cedula);
     Factura agregarAbono(std::string cedula, time_t fechaEmision, double abono);
-    Factura get(std::string cedula);
+    std::vector<Factura> get(std::string cedula);
+    std::vector<Factura> get();
 
 };
 

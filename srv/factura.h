@@ -8,6 +8,7 @@
 
 class Detalle
 {
+public:
     int numDetalle;
     int cantidad;
     std::string descripcion;
