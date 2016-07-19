@@ -2,10 +2,13 @@
 #define ADMINMAINWINDOW_H
 
 #include <QMainWindow>
+#include "loginwindow.h"
 
 namespace Ui {
 class AdminMainWindow;
 }
+
+class LoginWindow;
 
 class AdminMainWindow : public QMainWindow
 {
@@ -17,8 +20,14 @@ public:
 
 private slots:
 
+    void on_actionCerrarSesion_triggered();
+
+    void on_actionSalir_triggered();
+
 private:
     Ui::AdminMainWindow *ui;
+public:
+    LoginWindow* loginWindow;
 };
 
 #endif // ADMINMAINWINDOW_H

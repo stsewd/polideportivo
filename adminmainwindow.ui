@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Polideportivo - Administrador</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -101,30 +101,30 @@
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Clientes</string>
+        <string>Empleados</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableView" name="clientesTable"/>
+         <widget class="QTableView" name="empleadosTable"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QPushButton" name="agregarClienteBtn">
+           <widget class="QPushButton" name="agregarEmpleadoBtn">
             <property name="text">
              <string>Agregar</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="editarClienteBtn">
+           <widget class="QPushButton" name="editarEmpleadoBtn">
             <property name="text">
              <string>Editar</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="eliminarClienteBtn">
+           <widget class="QPushButton" name="eliminarEmpleadoBtn">
             <property name="text">
              <string>Eliminar</string>
             </property>
@@ -147,11 +147,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Empleados</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -169,7 +164,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionCerrar_sesi_n"/>
+    <addaction name="actionCerrarSesion"/>
     <addaction name="actionSalir"/>
    </widget>
    <addaction name="menuFile"/>
@@ -180,7 +175,7 @@
     <string>Salir</string>
    </property>
   </action>
-  <action name="actionCerrar_sesi_n">
+  <action name="actionCerrarSesion">
    <property name="text">
     <string>Cerrar sesión</string>
    </property>

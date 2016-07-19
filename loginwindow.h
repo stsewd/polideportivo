@@ -2,6 +2,7 @@
 #define LOGINWINDOW_H
 
 #include "mainwindow.h"
+#include "adminmainwindow.h"
 
 #include <QDialog>
 
@@ -10,6 +11,7 @@ class LoginWindow;
 }
 
 class MainWindow;
+class AdminMainWindow;
 
 class LoginWindow : public QDialog
 {
@@ -25,7 +27,9 @@ private slots:
 private:
     Ui::LoginWindow *ui;
 
+    AdminMainWindow* adminWindow;
     MainWindow* mainWindow;
+
 };
 
 #endif // LOGINWINDOW_H

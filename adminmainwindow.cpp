@@ -12,3 +12,14 @@ AdminMainWindow::~AdminMainWindow()
 {
     delete ui;
 }
+
+void AdminMainWindow::on_actionCerrarSesion_triggered()
+{
+    loginWindow->show();
+    this->close();
+}
+
+void AdminMainWindow::on_actionSalir_triggered()
+{
+    this->close();
+}
