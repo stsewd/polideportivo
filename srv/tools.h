@@ -13,7 +13,6 @@ void validarTelefono(std::string telefono);
 void validarString(std::string str);
 void validarNumero(double num);
 TipoEspacioComplementario getTipoEspacioComplementario(std::string tipoEspacio);
-Estado getEstado(std::string estadoEspacio);
 TipoEspacioDeportivo getTipoEspacioDeportivo(std::string tipoEspacio);
 Estado getEstado(std::string estadoEspacio);
 std::string estadoToString(Estado estado);

@@ -45,8 +45,10 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
     Espacio espacio;
     std::vector<Reserva> reservas;
     try{
+        ClienteDAO clienteDAO;
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Polideportivo.Reserva where idCliente='" + cedulaCliente+ "'");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
             if(espacioDeportivo != NULL){
@@ -56,6 +58,10 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
                 espacio = (espacio) espacioComplementario;
             }
              //como se puede obtener los espacios sin saber que tipo es//
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
@@ -70,6 +76,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente)
 
 std::vector<Reserva> reservadao::get(time_t fecha)
 {
+    ClienteDAO clienteDAO;
     Reserva reserva;
     Espacio espacio;
     std::vector<Reserva> reservas;
@@ -78,6 +85,7 @@ std::vector<Reserva> reservadao::get(time_t fecha)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fecha) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&aux)+"')");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
              //como se puede obtener los espacios sin saber que tipo es//
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
@@ -87,6 +95,10 @@ std::vector<Reserva> reservadao::get(time_t fecha)
                 EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                 espacio = (espacio) espacioComplementario;
             }
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
@@ -101,6 +113,7 @@ std::vector<Reserva> reservadao::get(time_t fecha)
 
 std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
 {
+    ClienteDAO clienteDAO;
     Reserva reserva;
     Espacio espacio;
     std::vector<Reserva> reservas;
@@ -109,6 +122,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fecha) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&aux)+"') and idCliente='"+cedulaCliente+"'");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
              //como se puede obtener los espacios sin saber que tipo es//
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
@@ -118,6 +132,10 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
                 EspacioComplementario espacioComplementario = espacioComplementariodao.get(dataBase->resultset->getString(1));
                 espacio = (espacio) espacioComplementario;
             }
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.cliente = &cliente;
             reserva.espacio = &espacio;
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
@@ -132,6 +150,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fecha)
 
 std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
 {
+    ClienteDAO clienteDAO;
     Reserva reserva;
     Espacio espacio;
     std::vector<Reserva> reservas;
@@ -139,6 +158,7 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fechaInicial) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&fechaFinal)+"')");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
              //como se puede obtener los espacios sin saber que tipo es//
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
@@ -150,6 +170,12 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
             }
             reserva.cliente = cliente;
             reserva.espacio = espacio;
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+            reserva.cliente = &cliente;
+            reserva.espacio = &espacio;
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
             reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
             reservas.push_back(reserva);
@@ -162,6 +188,7 @@ std::vector<Reserva> reservadao::get(time_t fechaInicial, time_t fechaFinal)
 
 std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInicial, time_t fechaFinal)
 {
+    ClienteDAO clienteDAO;
     Reserva reserva;
     Espacio espacio;
     std::vector<Reserva> reservas;
@@ -169,6 +196,7 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva WHERE ('" + getFecha(&fechaInicial) +
                                                               "' <= fechaReservacion AND fechaReservacion <= '"+getFecha(&fechaFinal)+"') and idCliente='"+cedulaCliente+"'");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
              //como se puede obtener los espacios sin saber que tipo es//
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
@@ -180,6 +208,12 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
             }
             reserva.cliente = cliente;
             reserva.espacio = espacio;
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+            reserva.cliente = &cliente;
+            reserva.espacio = &espacio;
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
             reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
             reservas.push_back(reserva);
@@ -192,12 +226,14 @@ std::vector<Reserva> reservadao::get(std::string cedulaCliente, time_t fechaInic
 
 std::vector<Reserva> reservadao::get()
 {
+    ClienteDAO clienteDAO;
     Reserva reserva;
     Espacio espacio;
     std::vector<Reserva> reservas;
     try{
         dataBase->resultset=dataBase->statement->executeQuery("SELECT * FROM Reserva ");
         while(dataBase->resultset->next()){
+<<<<<<< HEAD
             Cliente cliente = clientedao.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
              //como se puede obtener los espacios sin saber que tipo es//
             EspacioDeportivo espacioDeportivo = espacioDeportivodao.get(dataBase->resultset->getString(1));
@@ -209,6 +245,12 @@ std::vector<Reserva> reservadao::get()
             }
             reserva.cliente = cliente;
             reserva.espacio = espacio;
+=======
+            Cliente cliente = clienteDAO.get(dataBase->resultset->getString(0)); //cliente puede salir de aca y ponerse una linea mas arriba
+            Espacio espacio; //como se puede obtener los espacios sin saber que tipo es//
+            reserva.cliente = &cliente;
+            reserva.espacio = &espacio;
+>>>>>>> f0598f8f04d02a7ecd1ed1a27de8ad6f4ae3221a
             reserva.fechaReservacion = getFechaString(dataBase->resultset->getString(2));
             reserva.fechaReserva = getFechaString(dataBase->resultset->getString(3));
             reservas.push_back(reserva);

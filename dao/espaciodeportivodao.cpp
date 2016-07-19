@@ -68,7 +68,7 @@ EspacioDeportivo EspacioDeportivoDAO::get(std::string nombre)
         double num = atof( dataBase->resultset->getString(2).c_str() );
         espacio.precioPorhora = num;
         espacio.capacidad = std::stoi(dataBase->resultset->getString(3).c_str());
-        espacio.estado = getEstado(dataBase->resultset->getString(4).c_str());
+        espacio.estado = getEstado(std::string(dataBase->resultset->getString(4).c_str()));
         espacio.horario = getHorario(dataBase->resultset->getString(5), dataBase->resultset->getString(6));
         espacio.tipo.nombre = dataBase->resultset->getString(8);
     }
